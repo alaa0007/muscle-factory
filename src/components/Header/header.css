@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/header.jpg)
+}
+
+.header-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+h1{
+    font-size: 3.2rem;
+    font-family: 'RocknRoll One', sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+h2{
+    font-size: 2rem;
+    font-family: 'Rosarivo', serif;
+    text-transform: uppercase;
+}
+
+.header-footer{
+    position: relative;
+    bottom: 0;
+}
+
+
+.box{
+    border: 3px solid white;
+    border-radius: 0.9rem;
+    font-weight: 900;
+}
+
+.box p{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+}
+
+.social-media{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    position: absolute;
+    border: 1px solid white;
+    left: -0.2rem;
+    bottom: 5rem;
+    padding: 1rem;
+    font-size: 2.5rem;
+}
