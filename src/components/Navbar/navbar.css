@@ -5,30 +5,44 @@ nav{
     height: 12vh;
     width: 100vw;
     position: fixed;
+    background: transparent; 
+}
+
+nav.active{
+    background-color: #1c1c1cec;
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+    z-index: 2;
 }
 
 nav ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    bottom: 20px;
+    bottom: 30px;
     position: relative;
 }
+
 .navbar_item{
     font-size: 20px;
     font-family: 'Roboto Slab', serif;
 }
 
+.navbar_item:hover{
+    border-bottom: 0.5px solid var(--color-white);
+    transition: var(--transition);
+}
+
 .active{
-    border-bottom: 2px solid var(--color-white);
+    border-bottom: 3px solid var(--color-white);
 }
 
 .navbar_logo{
-    height: 6rem;
-    width: 6rem;
+    height: 7rem;
+    width: 8rem;
     border-radius: 50%;
     position: relative;
-    top: 10px;
+    top: 20px;
 }
 
 
@@ -41,13 +55,19 @@ nav ul{
   /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
   @media screen and (max-width : 400px) {
     
+    .navbar_item{
+        display: none;
+    }
+
     
-    
-    
+    .btn{
+        display: none;
+    }
+
     .navbar_logo{
         height: 4rem;
         width: 4rem;
-        top: 5px;
-        left: 5px;
+        top: 25px;
+        left: -70px;
     }
 }

@@ -10,14 +10,14 @@ const Header = () => {
       <h2>WELCOME TO OUR TEMPLE</h2>
       <h1>CONNECTED MUSCLES</h1>
       <div><a href="#about" className='btn'>Discover</a></div>
-      <div className='header-footer'>
-      <div className='box'><p>.</p></div>
-      <a href='#about'>Scroll Down</a>
       </div>
+      <div className='header-footer'>
+      <div className='box'><p className='scroll-point'>.</p></div>
+      <a href='#about' className='scroll-link'>Scroll Down</a>
       </div>
       <div className='social-media'>
-        <a href="https://www.facebook.com/musclefactory.co.uk/"><GrFacebook/></a>
-        <a href="https://www.instagram.com/musclefactory.co.uk/"><BsInstagram/></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"><GrFacebook/></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer"><BsInstagram/></a>
       </div>
     </section>
   )
