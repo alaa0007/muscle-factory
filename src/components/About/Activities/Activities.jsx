@@ -3,7 +3,7 @@ import './activities.css'
 
 const Activities = () => {
   return (
-    <div id='activities' className='activities'>
+    <div className='activities'>
       <div className='activity-left-side'>
         <div className='activity-number'> 9</div>
         <div className='activity-title'>ACTIVITIES</div>

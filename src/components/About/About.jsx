@@ -13,7 +13,7 @@ const About = () => {
       </div>
       <div className='about-right-side'>
         <div className='about-text'>
-          <h4>
+          <h4 id='activities'>
           WHO ARE WE ?
           </h4>
           <p>
