@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './navbar.css';
-import logo from '../../assets/Images/logo.png';
+import logo from '../../assets/Images/logoWithoutBg.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
             <li className='navbar_item'><a href="#" onClick={ () => setIsActive('#') }  className={isActive ==="#" ? 'active' : ''}>Home</a></li>
             <li className='navbar_item'><a href="#about" onClick={ () => setIsActive('#about') }  className={isActive ==="#about" ? 'active' : ''}>About</a></li>
             <li className='navbar_item'><a href="#activities" onClick={ () => setIsActive('#activities') }  className={isActive ==="#activities" ? 'active' : ''}>Activities</a></li>
-            <li><a href="#"><img src={logo} alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => setIsActive('#') }/></a></li>
+            <li><a href="#"><img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => setIsActive('#') }/></a></li>
             <li className='navbar_item'><a href="#coaches" onClick={ () => setIsActive('#coaches') }  className={isActive ==="#coaches" ? 'active' : ''}>Coaches</a></li>
             <li className='navbar_item'><a href="#contact" onClick={ () => setIsActive('#contact') }  className={isActive ==="#contact" ? 'active' : ''}>Contact</a></li>
             <li><a href=""  className='btn'>Login</a></li>

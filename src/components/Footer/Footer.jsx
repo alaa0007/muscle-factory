@@ -3,7 +3,11 @@ import './footer.css'
 
 const Footer = () => {
   return (
-    <div id='footer'>Footer</div>
+    <footer>
+      <div className="footer_copyright">
+        <small>&copy; Easy Way Team, All rights reserved</small>
+      </div>
+  </footer>
   )
 }
 

@@ -10,9 +10,9 @@ const Coaches = () => {
     <section id='coaches' className='coaches'>Coaches
     <h1 className='coaches-title'>Coaches</h1>
     <div className='coaches-container'>
-      <CoachCard image={Coach1} />
-      <CoachCard image={Coach2} />
-      <CoachCard image={Coach3} />
+      <CoachCard image={Coach1} name="Foulena ben Foulen" />
+      <CoachCard image={Coach2} name="Foulen ben Foulen"/>
+      <CoachCard image={Coach3} name="Foulena ben Foulena"/>
     </div>
     </section>
   )
