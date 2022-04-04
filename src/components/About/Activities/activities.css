@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&display=swap');
+
+.activities{
+    margin-top: 3rem;
+    display: flex;
+    gap: 10%;
+}
+
+.activity-left-side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-left-side .activity-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-dark);
+    border-radius: 50%;
+    width: 15rem;
+    font-size: 10rem;
+    font-family: 'Roboto Slab', serif;
+
+}
+
+.activity-left-side .activity-title{
+    font-family: 'Rosarivo', serif;
+    font-size: 30px;
+    margin-top: 2rem;
+}
+
+.activity-right-side{
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 300px;
+}
+
+.activity-right-side .activity-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 1rem 2rem;
+    border-radius: 10%;
+}
+
+.activity-item .activity-item-title{
+    color: var(--color-white);
+    font-family: 'Saira Condensed', sans-serif;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+.activity-right-side .imgBox1{
+    background: linear-gradient(rgba(0, 0, 0, 0.568), rgba(0, 0, 0, 0.585)),  url('../../../assets/Images/body_building.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+
+}
+
+.activity-right-side .imgBox2{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),  url('../../../assets/Images/crossfit.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+
+}
+
+.activity-right-side .imgBox3{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../../assets/Images/BodyTrain.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+
+.activity-right-side .imgBox4{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('../../../assets/Images/Gymnastics.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+
+.activity-right-side .imgBox5{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),  url('../../../assets/Images/yoga.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+
+.activity-right-side .imgBox6{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('../../../assets/Images/boxing.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+
+.activity-right-side .imgBox7{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('../../../assets/Images/Runnig.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+
+.activity-right-side .imgBox8{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('../../../assets/Images/cardio.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+
+.activity-right-side .imgBox9{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('../../../assets/Images/bodyhit.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}

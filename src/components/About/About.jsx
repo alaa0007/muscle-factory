@@ -1,5 +1,6 @@
 import React from 'react'
 import './about.css'
+import Activities from './Activities/Activities'
 
 const About = () => {
   return (
@@ -21,9 +22,7 @@ const About = () => {
            Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec maximus.
           </p>
         </div>
-        <div className='activities'>
-          
-        </div>
+        <Activities />
       </div>
     </section>
   )
