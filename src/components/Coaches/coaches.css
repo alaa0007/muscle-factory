@@ -48,7 +48,7 @@
 
 .coaches-container .coaches-name{
     font-family: 'Saira Condensed', sans-serif;
-    font-weight: bold;
+    font-weight: 400;
     font-size: 2rem;
     color: var(--color-white);
     margin-top: 5rem;
