@@ -2,7 +2,7 @@
 
 nav{
     padding: 1rem;
-    height: 12vh;
+    height: 5rem;
     width: 100vw;
     position: fixed;
     background: transparent; 
@@ -24,14 +24,15 @@ nav ul{
 }
 
 .navbar_item{
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: 'Roboto Slab', serif;
+    display: relative;
 }
 
 .navbar_item:hover{
-    border-bottom: 0.5px solid var(--color-white);
+    border-bottom: 0.1px solid var(--color-white);
     transition: var(--transition);
-}
+} 
 
 .active{
     border-bottom: 3px solid var(--color-white);
@@ -46,7 +47,18 @@ nav ul{
 }
 
 
-
+/*************************** MEDIA QUERIES Large DEVICES*****************************/
+@media screen and (max-width : 1024px) {
+    .navbar_logo{
+        display: none;
+    }
+    nav ul{
+        bottom: 0;
+    }
+    .navbar_item{
+        font-size: 0.9rem;
+    }
+}
 
 /*************************** MEDIA QUERIES MEDIUM DEVICES*****************************/
 @media screen and (max-width : 800px) {
@@ -56,6 +68,9 @@ nav ul{
   @media screen and (max-width : 400px) {
     
     .navbar_item{
+        display: none;
+    }
+    .active{
         display: none;
     }
 

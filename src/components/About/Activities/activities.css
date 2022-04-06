@@ -30,15 +30,15 @@
 
 .activity-left-side .activity-title{
     font-family: 'Rosarivo', serif;
-    font-size: 30px;
+    font-size: 2.5rem;
     margin-top: 2rem;
 }
 
 .activity-right-side{
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
-    height: 300px;
+    width: 24.15rem;
+    height: 20rem;
 }
 
 .activity-right-side .activity-item{
@@ -46,8 +46,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
+    width: 4rem;
+    height: 4rem;
     margin: 1rem 2rem;
     border-radius: 10%;
 }
@@ -153,4 +153,30 @@
     width: 100%;
     height: 100%;
     border-radius: 10%;
+}
+
+/*************************** MEDIA QUERIES SMALL DEVICES*****************************/
+@media screen and (max-width : 1400px) {
+    .activities{
+        gap: 0%;
+    }
+}
+
+@media screen and (max-width : 1050px) {
+    .activities{
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+    }
+    .activity-right-side{
+        position: relative;
+        bottom: 2rem;
+    }
+}
+
+/*************************** MEDIA QUERIES SMALL DEVICES*****************************/
+@media screen and (max-width : 715px) {
+    .activity-right-side{
+        display: none;
+    }
 }

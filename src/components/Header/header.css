@@ -19,13 +19,14 @@
     text-align: center;
 }
 
-h1{
+.hero h1{
     font-size: 3.2rem;
     font-family: 'RocknRoll One', sans-serif;
     text-transform: uppercase;
     margin-bottom: 2rem;
 }
-h2{
+
+.hero h2{
     font-size: 2rem;
     font-family: 'Rosarivo', serif;
     text-transform: uppercase;
@@ -40,7 +41,6 @@ h2{
     bottom: 3rem;
     left: 46.5%;
 }
-
 
 .box{
     position: relative;
@@ -110,6 +110,8 @@ h2{
     }
     
 }
+
+
   /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
   @media screen and (max-width : 400px) {
     .social-media{
@@ -126,5 +128,15 @@ h2{
     }
     .header-footer{
         left: 39%;
+    }
+
+    .hero h2{
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero h1{
+        font-size: 2rem;
+
     }
 }

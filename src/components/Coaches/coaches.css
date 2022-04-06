@@ -7,8 +7,8 @@
     background-color: var(--color-dark);
 }
 
-.coaches-title{
-    font-size: 11rem ;
+.coaches h1{
+    font-size: 11rem;
     color: var(--color-white);
     opacity: 30%;
     font-family: 'Saira Stencil One', cursive;
@@ -68,4 +68,38 @@
     border-radius: 20%;
     height: 3rem;
     background: var(--color-white);
+}
+
+
+/*************************** MEDIA QUERIES MEDUIM DEVICES*****************************/
+
+@media screen and (max-width : 1050px) {
+    .coaches h1{
+        font-size: 8rem;
+    }
+
+    .coaches-container{
+        flex-direction: column;
+        gap: 5rem;
+    }
+
+    .coaches-container .coaches-name::before{
+        display: none;
+    }
+}
+
+@media screen and (max-width : 700px) {
+    .coaches h1{
+        font-size: 5rem;
+    }
+}
+
+/*************************** MEDIA QUERIES SMALL DEVICES*****************************/
+@media screen and (max-width : 520px) {
+    .coaches h1{
+        font-size: 2.5rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
 }

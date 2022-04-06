@@ -19,7 +19,7 @@
 
 }
 
-.about-title{
+.about-left-side .about-title{
     position: relative;
     top: 50%;
     left: 50%;
@@ -28,14 +28,14 @@
     text-align: center;
 }
 
-.about-title h2{
+.about-left-side .about-title h2{
     color: var(--color-white);
-    letter-spacing: 7px;
+    letter-spacing: 0.5rem;
     font-size: 3rem;
     font-family: 'Saira Condensed', sans-serif;
 }
 
-.about-title h4{
+.about-left-side .about-title h4{
     color: var(--color-white);
     font-weight: lighter;
     font-size: 1.8rem;
@@ -48,6 +48,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .about-text h4{
     font-size: 2rem;
     margin-top: 8rem;
@@ -58,4 +59,43 @@
     font-family: 'Roboto Slab', serif;
     color: var(--color-dark);
     margin-top: 1rem;
+}
+
+
+
+/*************************** MEDIA QUERIES LARGE DEVICES*****************************/
+@media screen and (max-width : 1250px) {
+    .about_container{
+        grid-template-columns: 39% 60%;
+        gap: 1%;
+    }
+}
+
+@media screen and (max-width : 1050px) {
+    .about_container{
+        grid-template-columns: 100%;
+    }
+    .about-left-side{
+        display: none;
+    }
+
+    .about-text{
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+/*************************** MEDIA QUERIES MEDIUM DEVICES*****************************/
+@media screen and (max-width : 900px) {
+
+    
+}
+
+
+  /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
+@media screen and (max-width : 400px) {
+
+}
+@media screen and (max-width : 600px) {
+
 }

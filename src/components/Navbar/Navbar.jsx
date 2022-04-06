@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <nav className={isNavActive === true ? 'active' : ''}>
         <ul>
-            <li className='navbar_item'><a href="#" onClick={ () => setIsActive('#') }  className={isActive ==="#" ? 'active' : ''}>Home</a></li>
+            <li className='navbar_item'><a href="#" onClick={ () => setIsActive('#') }  className={isActive ==="#" ? 'active' : ''}><span className='item'>Home</span> </a></li>
             <li className='navbar_item'><a href="#about" onClick={ () => setIsActive('#about') }  className={isActive ==="#about" ? 'active' : ''}>About</a></li>
             <li className='navbar_item'><a href="#activities" onClick={ () => setIsActive('#activities') }  className={isActive ==="#activities" ? 'active' : ''}>Activities</a></li>
             <li><a href="#"><img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => setIsActive('#') }/></a></li>
