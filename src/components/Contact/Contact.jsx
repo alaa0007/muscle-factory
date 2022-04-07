@@ -12,7 +12,7 @@ const Contact = () => {
           <h2>CONNECTED MUSCLES</h2>
           <h4>Tunisia, ARIANA</h4>
         </div>
-      <p className='contact-text'>
+      <div className='contact-text'>
         <div className='contact-days'>
           <div> <span className='contact-day'> MONDAY TO FRIDAY </span> <span className='contact-hour'> 07H-22H </span></div>
           <div> <span className='contact-day'> SATURDAY </span>  <span className='contact-hour'> 09H-17H </span></div>
@@ -22,7 +22,7 @@ const Contact = () => {
           <div> <span className='contact-socialMedia'> PHONE </span> <span className='contact-socialMediaText'> +216 xx xxx xxx </span></div>
           <div> <span className='contact-socialMedia'> EMAIL </span> <span className='contact-socialMediaText'> connectedm@mail.com </span></div>
         </div>
-      </p>
+      </div>
       </div>
       <div className='contact-right-side'>
         <div className='logo-contianer'>

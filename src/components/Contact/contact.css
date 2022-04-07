@@ -200,3 +200,13 @@
         font-size: 1.5rem;
     }
 }
+
+@media screen and (max-width : 380px) {
+    
+    .contact-title h2{
+        font-size: 1.5rem;
+    }
+    .contact-title h4{
+        font-size: 1.3rem;
+    }
+}

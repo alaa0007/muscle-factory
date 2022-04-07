@@ -103,3 +103,11 @@
         text-align: center;
     }
 }
+
+@media screen and (max-width : 380px) {
+    .coaches h1{
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+

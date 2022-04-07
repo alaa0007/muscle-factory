@@ -6,6 +6,7 @@ nav{
     width: 100vw;
     position: fixed;
     background: transparent; 
+    z-index: 2;
 }
 
 nav.active{
@@ -15,12 +16,13 @@ nav.active{
     z-index: 2;
 }
 
-nav ul{
+.nav-links{
     display: flex;
     justify-content: space-around;
     align-items: center;
     bottom: 40px;
     position: relative;
+    z-index: 2;
 }
 
 .navbar_item{
@@ -46,43 +48,89 @@ nav ul{
     top: 30px;
 }
 
+.mobile-menu{
+    display: none;
+}
+
+.small-device{
+    display: none;
+}
+
 
 /*************************** MEDIA QUERIES Large DEVICES*****************************/
-@media screen and (max-width : 1024px) {
+@media screen and (min-width : 520px ) and (max-width : 1024px) {
     .navbar_logo{
         display: none;
     }
-    nav ul{
+
+    .nav-links{
         bottom: 0;
     }
+
     .navbar_item{
         font-size: 0.9rem;
     }
 }
 
-/*************************** MEDIA QUERIES MEDIUM DEVICES*****************************/
-@media screen and (max-width : 800px) {
-
-}
   /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
-  @media screen and (max-width : 400px) {
-    
-    .navbar_item{
-        display: none;
-    }
-    .active{
-        display: none;
+  @media screen and (max-width : 520px) {
+    nav.active{
+        background-color: black;
     }
 
-    
-    .btn{
+    .mobile-menu{    
+        position: absolute;
+        bottom: 0.5rem;
+        right: 1.8rem;
+        cursor: pointer;
+        font-size: 2rem;
+        display: block;
+        font-size: 2rem;
+        color: var(--color-white);
+        z-index: 2;
+    }
+
+    .nav-links{
         display: none;
+    }
+    
+
+    .navbar_item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2.5rem;
+        outline: none;
+    }
+
+    .nav-links-mobile{
+        position: absolute;
+        display:block;  
+        list-style: none;
+        background-color: #000;
+        left: 0;
+        top: 50px;
+        transition: var(--transition);
+        width: 100%;
+        z-index: 2;
     }
 
     .navbar_logo{
-        height: 4rem;
-        width: 4rem;
-        top: 25px;
-        left: -70px;
+        display: none;
+    }
+
+    .btn-navbar{
+        display: block;
+        position: relative;
+        left: 40%;
+        margin: 2rem 0;
+    }
+    .small-device{
+        display: block;
+    }
+    .small-device h4{
+        font-size: 1.8rem;
+        color: var(--color-white);
+        text-transform: capitalize;
     }
 }
