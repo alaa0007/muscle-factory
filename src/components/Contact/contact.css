@@ -175,6 +175,11 @@
 
 
 /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
+@media screen and (min-width : 480px) and (max-width : 550px) {
+    .contact-container .contact-text{
+        gap: 5%;
+    }
+}
 @media screen and (max-width : 520px) {
     
     .contact-title h2{
