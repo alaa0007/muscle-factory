@@ -8,6 +8,7 @@ const Header = () => {
     <section className='hero' id='header'>
       <HeaderText />
       <SocialMediaBtn />
+      <div className="elfsight-app-1a9908e1-32cd-428f-9ff0-ee8e0942ac1f"></div>
     </section>
   )
 }

@@ -31,7 +31,7 @@ const Navbar = () => {
             <li><a href="#"><img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => setIsActive('#') }/></a></li>
             <li className='navbar_item'><a href="#coaches" onClick={ () => setIsActive('#coaches') }  className={ isActive ==="#coaches" ? 'active' : '' }> Coaches </a></li>
             <li className='navbar_item'><a href="#contact" onClick={ () => setIsActive('#contact') }  className={ isActive ==="#contact" ? 'active' : '' }> Contact </a></li>
-            <li><a href=""  className='btn btn-navbar'>Login</a></li>
+            <li><button className='btn btn-navbar'>Login</button></li>
         </ul>
         <div className='small-device'>
         <h4 className='mobile-logo'>muscle factory</h4>

@@ -16,6 +16,19 @@ nav.active{
     z-index: 2;
 }
 
+button{
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-white);
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    transition: var(--transition);
+}
+
 .nav-links{
     display: flex;
     justify-content: space-around;
