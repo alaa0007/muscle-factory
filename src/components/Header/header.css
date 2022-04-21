@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
-
 
 .hero{
     width: 100%;
@@ -8,7 +5,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../../assets/Images/header.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../../assets/Images/header.jpg);
     z-index: 1;
 }
 

@@ -1,0 +1,257 @@
+
+.top{
+    background-color: #000; 
+    width: 100%;
+    height: 70px;
+    position: fixed;
+}
+
+
+.profil{
+    display: grid;
+    grid-template-columns: 50% 45%;
+    gap: 1%;
+}
+
+.profil-left{
+    margin-top: 4rem;
+    width: 100%;
+    height: 40rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(../../assets/Images/profil.jpg);
+}
+
+.profil-left .profil-text{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.profil-left .profil-text h2{
+    color: var(--color-white);
+    letter-spacing: 0.5rem;
+    font-size: 3rem;
+    font-family: 'Saira Condensed', sans-serif;
+}
+
+.profil-left .profil-text h4{
+    color: var(--color-white);
+    font-weight: lighter;
+    font-size: 1.8rem;
+    font-family: 'Rosarivo', serif;
+}
+
+
+.profil-right{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profil-right .profil-text{
+    color: var(--color-dark);
+    font-size: 1.8rem;
+    font-family: 'Saira Stencil One', serif;
+    text-align: center;
+}
+.profil-right .profil-form{
+    margin-left: 2rem;
+    border: 2px solid var(--color-dark);
+    border-radius: 10px;
+}
+.profil-right .profil-transformation{
+    margin-top: 2rem;
+    margin-left: 2rem;
+    border: 2px solid var(--color-dark);
+    border-radius: 10px;
+}
+
+.profil-right .profil-check{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    padding-left: 5rem;
+}
+.profil-right .profil-check h4{
+    color: var(--color-dark);
+    font-size: 2rem;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.line{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+hr{
+    border: 1px solid #000;
+    color: #000;
+    background-color: #000;
+    width: 90%;
+}
+
+.btn-profil{
+    color: var(--color-white);
+    background-color: var(--color-dark);
+}
+
+.btn-profil:hover{
+    border: 1px solid var(--color-dark);
+}
+
+.profil-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 2rem;
+}
+
+.profil-form-inputs{
+    display: flex;
+    margin: 0.5rem 1rem 0 2rem;
+}
+
+.bodyImage{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(111, 110, 110, 0.819);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    text-align: center;
+    background-color: #E5E4E4;
+    width: 5.5rem;
+    height: 3rem;
+    font-family: 'Roboto Slab', serif;
+    font-size: 0.5rem !important;
+    margin-left: 2.5rem;
+}
+
+.logoImg{
+    font-size: 1rem;
+}
+
+.height{
+    width: 3rem !important; 
+    margin-right: 0 !important;
+}
+
+.weight{
+    width: 3rem !important; 
+    margin-right: 0 !important;
+}
+
+.space{
+    margin-left: 0.5rem;
+}
+
+.profil-form-inputs label{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.profil-form-inputs input{
+    border: 1px solid var(--color-dark);
+    border-radius: 0.5rem;
+    width: 9rem;
+    text-align: center;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profil-form-inputs select{
+    border: 1px solid var(--color-dark);
+    border-radius: 0.5rem;
+    width: 10rem;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.profil-form-text h3 {
+    color: var(--color-dark);
+    font-size: 1.8rem;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+.profil-transformation{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 2rem;
+}
+
+.profil-transformation-text h3{
+    color: var(--color-dark);
+    font-size: 1.8rem;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
+.profil-transformation-weeks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3rem;
+    flex-wrap: wrap;
+}
+
+.profil-transformation-weeks .week{
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4rem;
+    font-weight: 510;
+    margin : 1rem; 
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/*************************** MEDIA QUERIES LARGE DEVICES*****************************/
+@media screen and (max-width : 1250px) {
+    .about_container{
+        grid-template-columns: 39% 60%;
+        gap: 1%;
+    }
+}
+
+@media screen and (max-width : 1050px) {
+}
+
+/*************************** MEDIA QUERIES MEDIUM DEVICES*****************************/
+@media screen and (max-width : 900px) {
+
+    
+}
+
+
+  /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
+@media screen and (max-width : 400px) {
+
+}
+@media screen and (max-width : 600px) {
+
+}

@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
 
 
 .about_container{
@@ -83,19 +81,4 @@
         margin-left: 2rem;
         margin-right: 2rem;
     }
-}
-
-/*************************** MEDIA QUERIES MEDIUM DEVICES*****************************/
-@media screen and (max-width : 900px) {
-
-    
-}
-
-
-  /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
-@media screen and (max-width : 400px) {
-
-}
-@media screen and (max-width : 600px) {
-
 }
