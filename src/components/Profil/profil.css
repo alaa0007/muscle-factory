@@ -119,7 +119,15 @@ hr{
 
 .profil-form-inputs{
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0.5rem 1rem 0 2rem;
+}
+
+.btn-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bodyImage{
@@ -221,10 +229,6 @@ hr{
     margin : 1rem; 
     cursor: pointer;
 }
-
-
-
-
 
 
 

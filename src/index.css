@@ -33,6 +33,7 @@ html{
 
 ::-webkit-scrollbar{
   display: none;
+  
 }
 
 body{
@@ -64,6 +65,7 @@ a{
 a:hover{
   color: var(--color-light);
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .btn{

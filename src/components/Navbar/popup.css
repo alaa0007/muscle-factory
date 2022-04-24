@@ -1,0 +1,99 @@
+@keyframes customEnterOverlayAnimation {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes customLeaveOverlayAnimation {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  
+  @keyframes customEnterModalAnimation {
+    0% {
+      transform: scale(0.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes customLeaveModalAnimation {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.2);
+    }
+  }
+
+.popup{
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  max-height: 20rem;
+}
+
+
+.popup-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.popup-logo{
+  width: 6rem;
+  height: 6rem;
+}
+
+.popup-header h2{
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: 'Roboto Slab',sans-serif;
+}
+
+.popup-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container label{
+  font-size: 3rem;
+  margin-top: 0.7rem;
+  margin-right: 0.5rem;
+}
+
+.popup-container input{
+  border-radius: 0.3rem;
+  border: 1px solid #000;
+  width: 15rem;
+  height: 2rem;
+  padding-left: 0.5rem;
+}
+
+.popup-container-email{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container-password{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
