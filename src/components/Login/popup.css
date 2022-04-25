@@ -36,7 +36,7 @@
   margin: 2rem;
   display: flex;
   flex-direction: column;
-  max-width: 20rem;
+  max-width: 15rem;
   max-height: 20rem;
 }
 
@@ -97,3 +97,4 @@
   justify-content: center;
   align-items: center;
 }
+

@@ -6,10 +6,11 @@ import { AiOutlineMenuFold } from 'react-icons/ai';
 import { AiOutlineClose } from 'react-icons/ai';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import popupLogo from '../../assets/Images/logoWithoutBg.png';
 import { MdEmail } from 'react-icons/md';
 import { GiHouseKeys } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import  shutDown  from '../../assets/Images/shutdown.png';
+
 import Login from '../Login/Login';
 
 
@@ -17,7 +18,7 @@ const Navbar = () => {
 
   let Currentuser ={}
 
-  const [isActive, setIsActive] = useState('#');
+  const [isActive, setIsActive] = useState('# ');
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [open, setOpen] = useState(false);
@@ -31,13 +32,8 @@ const Navbar = () => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
-  const changeNavBg = () => {
-    if(window.scrollY >= 160) {
-      setIsNavActive(true);
-    }else{
-      setIsNavActive(false);
-    }
-  }
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('email: ', isEmail, 'password: ', isPassword);
@@ -52,22 +48,37 @@ const Navbar = () => {
     if(user) {
       setIsLogin(true);
       setIsUser(user);
-      setIsError('');
       onCloseModal();
       console.log('user: ', user);
     }else{
       setIsLogin(false);
       setIsError('Invalid email or password');
     }
+  }
 
+  const handleLogOut = () => {
+    setIsLogin(false);
+    setIsUser({});
   }
 
   useEffect(() => {
     setIsError('');
   },[isEmail,isPassword])
 
+
+  const changeNavBg = () => {
+    if(window.scrollY >= 160) {
+      setIsNavActive(true);
+    }else{
+      setIsNavActive(false);
+    }
+  }
+
   window.addEventListener('scroll', changeNavBg);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[])
   
   return (
     <nav className={ isNavActive === true ? 'active' : '' }>
@@ -76,15 +87,18 @@ const Navbar = () => {
             <li className='navbar_item'><Link to="/#" onClick={ () => setIsActive('#') }  className={ isActive ==="#" ? 'active' : '' }> Home </Link></li>
             <li className='navbar_item'><Link to="/#about" onClick={ () => setIsActive('#about') }  className={ isActive ==="#about" ? 'active' : '' }> About </Link></li>
             <li className='navbar_item'><Link to="/#activities" onClick={ () => setIsActive('#activities') }  className={ isActive ==="#activities" ? 'active' : '' }> Activities </Link></li>
-            <li><Link to="#"><img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => setIsActive('#') }/></Link></li>
+            <li><Link to="/#"><img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => setIsActive('#') }/></Link></li>
             <li className='navbar_item'><Link to="/#coaches" onClick={ () => setIsActive('#coaches') }  className={ isActive ==="#coaches" ? 'active' : '' }> Coaches </Link></li>
             <li className='navbar_item'><Link to="/#contact" onClick={ () => setIsActive('#contact') }  className={ isActive ==="#contact" ? 'active' : '' }> Contact </Link></li>
-            <li>{!isLogin ? (
-              <button className='btn btn-navbar' onClick={onOpenModal}>Login</button>):(
-              <Link to="/Profil" className='btn btn-navbar'>Profil</Link>
-              )}
-            </li>
+            { !isLogin ? (
+            <li>
+              <button className='btn btn-navbar' onClick={onOpenModal}>Login</button></li> ): (
+              <li className='isLogin'><Link to="/Profil" onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</Link>
+              <Link to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></Link></li>
+              )
+            }
         </ul>
+
         <div className='small-device'>
         <h4 className='mobile-logo'>muscle factory</h4>
         <a className='mobile-menu' onClick={ () => setIsMobile(!isMobile) } >
@@ -100,11 +114,11 @@ const Navbar = () => {
         }}
         animationDuration={500}>
         <div className='popup'>
-          <p>{ isError }</p>
           <div className='popup-header'>
-            <img src={popupLogo} alt="loginLogo" className='popup-logo'/>
+            <img src={ logo } alt="loginLogo" className='popup-logo'/>
             <h2>Connect to your GYM account</h2>
           </div>
+          <p className='error'>{ isError }</p>
           <div className='popup-container'>
             <form onSubmit={handleSubmit}>
             <div className='popup-container-email'>

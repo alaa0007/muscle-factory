@@ -1,9 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useId} from 'react'
 import './profil.css'
 import { BsFillCameraFill } from 'react-icons/bs'
+import { Modal } from 'react-responsive-modal';
+import logo from '../../assets/Images/logoWithoutBg.png';
+import profilBody from '../../assets/Images/profilBody.jpg';
+import profilHeigth from '../../assets/Images/profilHeigth.png';
+import profilWeight from '../../assets/Images/profilWeight.png';
+
 
 const Profil = () => {
-  
+  const id = useId();
+  const idHeight = useId();
+  const idWeight = useId();
+
   const userData = {
     date : "",
     goal : "",
@@ -15,11 +24,17 @@ const Profil = () => {
   const[formValues, setFormValues] = useState(userData);
   const[formErrors, setFormErrors] = useState({});
   const[isSubmitted, setIsSubmitted] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
 
   const handleChange = (e) => {
     const {name, value} = e.target
     setFormValues({...formValues, [name]: value})
-    console.log(formValues);
+    // console.log(formValues);
   }
 
   const handleSubmit = (e) => {
@@ -31,17 +46,17 @@ const Profil = () => {
   }
   
   const apiProfilUpdate = (formValues) => {
-    fetch('http://localhost:3000/Profil', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formValues)
-    })
-    .then(res => res.json())
-    .then(res => {
-      console.log(res);
-    })
+    // fetch('http://localhost:3000/Profil', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(formValues)
+    // })
+    // .then(res => res.json())
+    // .then(res => {
+    //   console.log(res);
+    // })
   }
 
   const validate = (values) => {
@@ -70,7 +85,10 @@ const Profil = () => {
     
   },[formErrors]);
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }
+  ,[])
 
   return (
     <div className='profil-container'>
@@ -105,8 +123,8 @@ const Profil = () => {
                 <input type='text' placeholder='180' className='height' name="height" value={formValues.height} onChange={handleChange} required/>Cm
                 <label className='space'> Body Weight :</label>
                 <input type='text' placeholder='80' className='weight' name="weight" value={formValues.weight} onChange={handleChange} required/>Kg
-                <label htmlFor="image" className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
-                <input type="file" id="image" name="image" accept="image/*" value={formValues.image} onChange={handleChange}  hidden/>              
+                <label htmlFor={id} className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
+                <input type="file" id={id} name="image" accept="image/*" value={formValues.image} onChange={handleChange}  hidden/>              
                 <div className='btn-form'>
                 <button className='btn btn-profil'>Save</button>
                 </div>
@@ -118,19 +136,15 @@ const Profil = () => {
             <div className='profil-transformation-text'>
               <h3>My Transformation</h3>
             </div>
-            <div className='profil-transformation-weeks'>
-              <span className='week'>Week 1</span>
-              <span className='week'>Week 2</span>
-              <span className='week'>Week 3</span>
-              <span className='week'>Week 4</span>
-              <span className='week'>Week 5</span>
-              <span className='week'>Week 6</span>
-              <span className='week'>Week 7</span>
-              <span className='week'>Week 8</span>
-              <span className='week'>Week 9</span>
-              <span className='week'>Week 10</span>
-              <span className='week'>Week 11</span>
-              <span className='week'>Week 12</span>
+        <div className='profil-transformation-weeks'>
+              <span className='week' onClick={onOpenModal}>Transformation 1</span>
+              <span className='week' onClick={onOpenModal}>Transformation 2</span>
+              <span className='week' onClick={onOpenModal}>Transformation 3</span>
+              <span className='week' onClick={onOpenModal}>Transformation 4</span>
+              <span className='week' onClick={onOpenModal}>Transformation 5</span>
+              <span className='week' onClick={onOpenModal}>Transformation 6</span>
+              <span className='week' onClick={onOpenModal}>Transformation 7</span>
+              <span className='week' onClick={onOpenModal}>Transformation 8</span>
             </div>
         </div>
         <div className='profil-check'>
@@ -142,6 +156,41 @@ const Profil = () => {
       <div className='line'>
       <hr/>
       </div>
+
+      
+      <Modal open={open} onClose={onCloseModal} center classNames={{
+          overlayAnimationIn: 'customEnterOverlayAnimation',
+          overlayAnimationOut: 'customLeaveOverlayAnimation',
+          modalAnimationIn: 'customEnterModalAnimation',
+          modalAnimationOut: 'customLeaveModalAnimation',
+        }}
+        animationDuration={500}>
+        <div className='popup-profil'>
+          <div className='popup-header'>
+          <img src={ logo } alt="loginLogo" className='logo'/>
+            <h2>Work hard until you see the results</h2>
+          </div>
+          <div className='popup-container'>
+            <div className='popup-height-weight'>
+              <div className='weight-img'>
+                <img src={ profilWeight } alt="weight" />
+                <label htmlFor='idWeight'>Weight:</label>
+                <span id={idWeight} className='heightCm'>{ formValues.weight || 0 }</span> Kg
+              </div>
+              <div className='height-img'>
+                <img src={ profilHeigth } alt="height" />
+                <label htmlFor='idHeight'>Height:</label>
+                <span id={idHeight} className='heightCm'>{ formValues.height || 0 }</span> Cm
+              </div>
+            </div>
+            <hr />
+            <div className='popup-progress'>
+              <img src={ profilBody } alt="yourBodyImage" />
+            </div>
+          </div>
+      </div>
+      </Modal>
+
     </div>
   )
 }

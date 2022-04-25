@@ -64,10 +64,29 @@ button{
     display: none;
 }
 
+.shutDownLogo{
+    font-size: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
 .small-device{
     display: none;
 }
 
+.error{
+    text-align: center;
+    color: #ff0000;
+    background-color: #f98b8b6f;
+    position: relative;
+    margin-top: 0.5rem;
+}
+
+.isLogin{
+    display: flex;
+    gap: 0.5rem;
+}
 
 /*************************** MEDIA QUERIES Large DEVICES*****************************/
 @media screen and (min-width : 520px ) and (max-width : 1024px) {

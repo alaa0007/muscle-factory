@@ -148,6 +148,7 @@ hr{
 }
 
 .logoImg{
+    margin-top: 0.3rem;
     font-size: 1rem;
 }
 
@@ -218,7 +219,6 @@ hr{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 3rem;
     flex-wrap: wrap;
 }
 
@@ -230,8 +230,70 @@ hr{
     cursor: pointer;
 }
 
+.popup-profil{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+    max-height: 25rem;
+}
+
+.popup-profil .popup-header .logo{
+    width: 9rem;
+    height: 9rem;
+}  
+
+.popup-profil .popup-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.popup-profil .popup-height-weight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    margin-right: 5.5rem;
+}
+
+.popup-profil .popup-height-weight .height-img{
+    display: flex;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+}
+
+.popup-profil .popup-height-weight .weight-img{
+    display: flex;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+}
 
 
+.popup-profil .popup-height-weight label{
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.popup-profil .popup-height-weight span{
+    margin-right: 0.2rem;
+}
+
+.popup-profil .popup-height-weight .heightCm{
+    /* border: 1px solid var(--color-dark); */
+    border-radius: 2rem;
+}
+
+.popup-profil .popup-progress{
+    margin-top: 1rem;
+    width: 10rem;
+    height: 10rem;
+}
 
 
 /*************************** MEDIA QUERIES LARGE DEVICES*****************************/

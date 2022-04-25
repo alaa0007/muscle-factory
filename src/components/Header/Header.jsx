@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './header.css';
 import HeaderText from './HeaderText';
 import SocialMediaBtn from './SocialMediaBtn';
 
 const Header = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }
+  ,[])
+
   return (
     <section className='hero' id='header'>
       <HeaderText />
