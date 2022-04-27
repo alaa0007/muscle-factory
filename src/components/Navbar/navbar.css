@@ -58,6 +58,7 @@ button{
     border-radius: 50%;
     position: relative;
     top: 30px;
+    cursor: pointer;
 }
 
 .mobile-menu{
@@ -163,5 +164,12 @@ button{
         font-size: 1.8rem;
         color: var(--color-white);
         text-transform: capitalize;
+    }
+
+    .isLogin{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.5rem;
     }
 }

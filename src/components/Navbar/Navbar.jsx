@@ -8,10 +8,11 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { MdEmail } from 'react-icons/md';
 import { GiHouseKeys } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import { Link as LinkTo } from 'react-router-dom';
 import  shutDown  from '../../assets/Images/shutdown.png';
+import { Link  } from 'react-scroll';
 
-import Login from '../Login/Login';
+
 
 
 const Navbar = () => {
@@ -28,10 +29,25 @@ const Navbar = () => {
   const [isError, setIsError] = useState('');
   const [isUser, setIsUser] = useState(Currentuser);
 
-
+  
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
+  const myRef = useRef(null)
+  // const slideInTop = (elem, delay, duration) => {
+  //   gsap.fromTo(elem,{
+  //       opacity: 0,
+  //       y: -300
+  //   },
+  //   {
+  //       opacity: 1,
+  //       y: 0,
+  //   } 
+  //   )}
+
+  // useEffect(() => {
+  //   slideInTop('#headerText')
+  // },[])
 
 
   const handleSubmit = async (e) => {
@@ -81,19 +97,19 @@ const Navbar = () => {
   },[])
   
   return (
-    <nav className={ isNavActive === true ? 'active' : '' }>
+    <nav className={ isNavActive === true ? 'active' : '' } id="nav">
 
         <ul className={ isMobile ? 'nav-links-mobile' : 'nav-links'} onClick={ () => setIsMobile(false) } >
-            <li className='navbar_item'><Link to="/#" onClick={ () => setIsActive('#') }  className={ isActive ==="#" ? 'active' : '' }> Home </Link></li>
-            <li className='navbar_item'><Link to="/#about" onClick={ () => setIsActive('#about') }  className={ isActive ==="#about" ? 'active' : '' }> About </Link></li>
-            <li className='navbar_item'><Link to="/#activities" onClick={ () => setIsActive('#activities') }  className={ isActive ==="#activities" ? 'active' : '' }> Activities </Link></li>
-            <li><Link to="/#"><img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => setIsActive('#') }/></Link></li>
-            <li className='navbar_item'><Link to="/#coaches" onClick={ () => setIsActive('#coaches') }  className={ isActive ==="#coaches" ? 'active' : '' }> Coaches </Link></li>
-            <li className='navbar_item'><Link to="/#contact" onClick={ () => setIsActive('#contact') }  className={ isActive ==="#contact" ? 'active' : '' }> Contact </Link></li>
+            <li className='navbar_item'><LinkTo to="/#"  onClick={ () => {setIsActive('#'); window.scrollTo(0,0)} }  className={ isActive ==="#" ? 'active' : '' }> Home </LinkTo></li>
+            <li className='navbar_item'><Link to="about" smooth="true" onClick={ () => {setIsActive('#about')}}  className={ isActive ==="#about" ? 'active' : '' }> About </Link></li>
+            <li className='navbar_item'><Link to="activities" smooth="true"  onClick={ () => {setIsActive('#activities')} }  className={ isActive ==="#activities" ? 'active' : '' }> Activities </Link></li>
+            <li><Link to="header" smooth="true"> <img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => {setIsActive('#')}}/></Link></li>
+            <li className='navbar_item'><Link to="coaches" smooth="true" onClick={ () => {setIsActive('#coaches')} }  className={ isActive ==="#coaches" ? 'active' : '' }> Coaches </Link></li>
+            <li className='navbar_item'><Link to="contact" smooth="true" onClick={ () => {setIsActive('#contact')} }  className={ isActive ==="#contact" ? 'active' : '' }> Contact </Link></li>
             { !isLogin ? (
             <li>
               <button className='btn btn-navbar' onClick={onOpenModal}>Login</button></li> ): (
-              <li className='isLogin'><Link to="/Profil" onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</Link>
+              <li className='isLogin'><LinkTo to={`/Profil/${isUser.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
               <Link to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></Link></li>
               )
             }

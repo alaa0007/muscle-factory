@@ -3,9 +3,9 @@ import './about.css'
 import AboutText from './AboutText'
 import Activities from './Activities/Activities'
 
-const About = () => {
+const About = ({myRef}) => {
   return (
-    <section id='about' className='about_container'>
+    <section id='about' className='about_container' ref={myRef}>
       <div className='about-left-side'>
         <div className='about-title'>
           <h2>CONNECTED MUSCLES</h2>

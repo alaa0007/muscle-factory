@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useId} from 'react'
+import { useParams } from 'react-router-dom';
 import './profil.css'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { Modal } from 'react-responsive-modal';
@@ -6,12 +7,16 @@ import logo from '../../assets/Images/logoWithoutBg.png';
 import profilBody from '../../assets/Images/profilBody.jpg';
 import profilHeigth from '../../assets/Images/profilHeigth.png';
 import profilWeight from '../../assets/Images/profilWeight.png';
+import Scroll from 'react-scroll-component';
+
 
 
 const Profil = () => {
-  const id = useId();
+  const idImage = useId();
   const idHeight = useId();
   const idWeight = useId();
+
+  const { id } = useParams();
 
   const userData = {
     date : "",
@@ -20,44 +25,56 @@ const Profil = () => {
     weight : "",
     image : ""
   }
-  
   const[formValues, setFormValues] = useState(userData);
+  const[istranformationValues, setIstranformationValues] = useState([{}]);
   const[formErrors, setFormErrors] = useState({});
   const[isSubmitted, setIsSubmitted] = useState(false);
-  const [open, setOpen] = useState(false);
+  const[isItem, setIsItem] = useState({});
+  const[open, setOpen] = useState(false);
 
   
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  const onCloseModal = () => setOpen(false)
+  
 
 
   const handleChange = (e) => {
     const {name, value} = e.target
     setFormValues({...formValues, [name]: value})
-    // console.log(formValues);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors (validate(formValues));
     setIsSubmitted(true);
-    apiProfilUpdate(formValues);
+    //apiProfilUpdate(formValues);
     // setFormValues(userData);
   }
   
-  const apiProfilUpdate = (formValues) => {
-    // fetch('http://localhost:3000/Profil', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(formValues)
-    // })
-    // .then(res => res.json())
-    // .then(res => {
-    //   console.log(res);
-    // })
-  }
+  // const apiProfilUpdate = async (formValues) => {
+  //    await fetch('http://localhost:3000/Profil', {
+  //      method: 'POST',
+  //      headers: {
+  //        'Content-Type': 'application/json'
+  //     },
+  //      body: JSON.stringify(formValues)
+  //    })
+  //    .then(res => res.json())
+  //   .then(res => {
+  //      console.log(res);
+  //    })
+  // }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
+      const body = await response.json();
+      setIstranformationValues(body);
+      console.log(istranformationValues);
+    };
+    fetchData();
+  }, [])
+
+
 
   const validate = (values) => {
     const errors = {};
@@ -77,12 +94,10 @@ const Profil = () => {
   }
 
   useEffect(() => {
-    console.log(formErrors);
       if(Object.keys(formErrors).length === 0 && isSubmitted) {
         console.log("form submitted");
         console.log(formValues);
       }
-    
   },[formErrors]);
 
   useEffect(() => {
@@ -123,8 +138,8 @@ const Profil = () => {
                 <input type='text' placeholder='180' className='height' name="height" value={formValues.height} onChange={handleChange} required/>Cm
                 <label className='space'> Body Weight :</label>
                 <input type='text' placeholder='80' className='weight' name="weight" value={formValues.weight} onChange={handleChange} required/>Kg
-                <label htmlFor={id} className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
-                <input type="file" id={id} name="image" accept="image/*" value={formValues.image} onChange={handleChange}  hidden/>              
+                <label htmlFor={idImage} className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
+                <input type="file" id={idImage} name="image" accept="image/*" value={formValues.image} onChange={handleChange}  hidden/>              
                 <div className='btn-form'>
                 <button className='btn btn-profil'>Save</button>
                 </div>
@@ -136,15 +151,14 @@ const Profil = () => {
             <div className='profil-transformation-text'>
               <h3>My Transformation</h3>
             </div>
-        <div className='profil-transformation-weeks'>
-              <span className='week' onClick={onOpenModal}>Transformation 1</span>
-              <span className='week' onClick={onOpenModal}>Transformation 2</span>
-              <span className='week' onClick={onOpenModal}>Transformation 3</span>
-              <span className='week' onClick={onOpenModal}>Transformation 4</span>
-              <span className='week' onClick={onOpenModal}>Transformation 5</span>
-              <span className='week' onClick={onOpenModal}>Transformation 6</span>
-              <span className='week' onClick={onOpenModal}>Transformation 7</span>
-              <span className='week' onClick={onOpenModal}>Transformation 8</span>
+            <div className='profil-transformation-weeks'>
+              {
+                istranformationValues.map(( item, index ) => {
+                  return(
+                    <span className='week' key={ index } onClick={ () => {setOpen(true); setIsItem(item)} }>Transformation { index+1 }</span>
+                  )
+                })
+              }
             </div>
         </div>
         <div className='profil-check'>
@@ -158,7 +172,7 @@ const Profil = () => {
       </div>
 
       
-      <Modal open={open} onClose={onCloseModal} center classNames={{
+       <Modal open={open} onClose={onCloseModal} center classNames={{
           overlayAnimationIn: 'customEnterOverlayAnimation',
           overlayAnimationOut: 'customLeaveOverlayAnimation',
           modalAnimationIn: 'customEnterModalAnimation',
@@ -175,12 +189,12 @@ const Profil = () => {
               <div className='weight-img'>
                 <img src={ profilWeight } alt="weight" />
                 <label htmlFor='idWeight'>Weight:</label>
-                <span id={idWeight} className='heightCm'>{ formValues.weight || 0 }</span> Kg
+                <span id={idWeight} className='heightCm'>{ isItem.id || 0 }</span> Kg
               </div>
               <div className='height-img'>
                 <img src={ profilHeigth } alt="height" />
                 <label htmlFor='idHeight'>Height:</label>
-                <span id={idHeight} className='heightCm'>{ formValues.height || 0 }</span> Cm
+                <span id={idHeight} className='heightCm'>{ isItem.id  || 0 }</span> Cm
               </div>
             </div>
             <hr />
@@ -189,7 +203,7 @@ const Profil = () => {
             </div>
           </div>
       </div>
-      </Modal>
+      </Modal> 
 
     </div>
   )

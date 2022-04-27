@@ -220,6 +220,9 @@ hr{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    max-height: 15rem;
+    overflow: scroll;
+    white-space: nowrap;
 }
 
 .profil-transformation-weeks .week{
