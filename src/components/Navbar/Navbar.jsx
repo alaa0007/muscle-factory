@@ -19,7 +19,7 @@ const Navbar = () => {
 
   let Currentuser ={}
 
-  const [isActive, setIsActive] = useState('# ');
+  const [isActive, setIsActive] = useState('#');
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [open, setOpen] = useState(false);
@@ -32,23 +32,6 @@ const Navbar = () => {
   
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-
-  const myRef = useRef(null)
-  // const slideInTop = (elem, delay, duration) => {
-  //   gsap.fromTo(elem,{
-  //       opacity: 0,
-  //       y: -300
-  //   },
-  //   {
-  //       opacity: 1,
-  //       y: 0,
-  //   } 
-  //   )}
-
-  // useEffect(() => {
-  //   slideInTop('#headerText')
-  // },[])
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,7 +83,7 @@ const Navbar = () => {
     <nav className={ isNavActive === true ? 'active' : '' } id="nav">
 
         <ul className={ isMobile ? 'nav-links-mobile' : 'nav-links'} onClick={ () => setIsMobile(false) } >
-            <li className='navbar_item'><LinkTo to="/#"  onClick={ () => {setIsActive('#'); window.scrollTo(0,0)} }  className={ isActive ==="#" ? 'active' : '' }> Home </LinkTo></li>
+            <li className='navbar_item'><LinkTo to="/"  onClick={ () => {setIsActive('#'); window.scrollTo(0,0)} }  className={ isActive ==="#" ? 'active' : '' }> Home </LinkTo></li>
             <li className='navbar_item'><Link to="about" smooth="true" onClick={ () => {setIsActive('#about')}}  className={ isActive ==="#about" ? 'active' : '' }> About </Link></li>
             <li className='navbar_item'><Link to="activities" smooth="true"  onClick={ () => {setIsActive('#activities')} }  className={ isActive ==="#activities" ? 'active' : '' }> Activities </Link></li>
             <li><Link to="header" smooth="true"> <img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => {setIsActive('#')}}/></Link></li>

@@ -1,16 +1,20 @@
-import React,{ useRef } from 'react'
+import React from 'react'
 import Header from '../components/Header/Header'
 import About from '../components/About/About'
 import Coaches from '../components/Coaches/Coaches'
+import Navbar from '../components/Navbar/Navbar'
+import Contact from '../components/Contact/Contact'
+import Footer from '../components/Footer/Footer'
 
 const HomePages = () => {
-  const myRef = useRef(null)
   return (
-    
     <>
+    <Navbar/>
     <Header />
-    <About ScrollTo={myRef}/>
+    <About/>
     <Coaches />  
+    <Contact />
+    <Footer />
     </>
   )
 }
