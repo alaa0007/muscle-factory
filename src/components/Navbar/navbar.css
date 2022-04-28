@@ -89,6 +89,15 @@ button{
     gap: 0.5rem;
 }
 
+.btn-login{
+    color: var(--color-white);
+    background-color: var(--color-dark);
+}
+
+.btn-login:hover{
+    border: 1px solid var(--color-dark);
+}
+
 /*************************** MEDIA QUERIES Large DEVICES*****************************/
 @media screen and (min-width : 520px ) and (max-width : 1024px) {
     .navbar_logo{

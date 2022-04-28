@@ -129,7 +129,7 @@ const Navbar = () => {
               <input type='password' name="password" placeholder='Password' onChange={(e) => setIsPassword(e.target.value)}  value={isPassword} required/>
             </div>
             <div className='popup-footer'>   
-               <button className='btn btn-profil'>Connect</button>
+               <button className='btn btn-login'>Connect</button>
                </div>
             </form>
           </div>
