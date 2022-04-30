@@ -5,13 +5,17 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
     "@coreui/react": "^4.1.2",
+    "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
     "gsap": "^3.10.4",
+    "json-server": "^0.17.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",
+    "react-redux": "^8.0.1",
     "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
@@ -23,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server db.json -p 5000 -w -d 0"
   },
   "eslintConfig": {
     "extends": [

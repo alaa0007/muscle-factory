@@ -1,13 +1,13 @@
-import React, {useState, useEffect, useId} from 'react'
+import React, {useState, useEffect, useId, useRef} from 'react'
 import { useParams } from 'react-router-dom';
 import './profil.css'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { Modal } from 'react-responsive-modal';
-import logo from '../../assets/Images/logoWithoutBg.png';
 import profilBody from '../../assets/Images/profilBody.jpg';
+import logo from '../../assets/Images/logoWithoutBg.png';
 import profilHeigth from '../../assets/Images/profilHeigth.png';
 import profilWeight from '../../assets/Images/profilWeight.png';
-import Scroll from 'react-scroll-component';
+import axios from 'axios';
 
 
 
@@ -17,6 +17,7 @@ const Profil = () => {
   const idWeight = useId();
 
   const { id } = useParams();
+  const fromRef = useRef();
 
   const userData = {
     date : "",
@@ -25,8 +26,9 @@ const Profil = () => {
     weight : "",
     image : ""
   }
+  
   const[formValues, setFormValues] = useState(userData);
-  const[istranformationValues, setIstranformationValues] = useState([{}]);
+  const[tranformationValues, setIstranformationValues] = useState([{}]);
   const[formErrors, setFormErrors] = useState({});
   const[isSubmitted, setIsSubmitted] = useState(false);
   const[isItem, setIsItem] = useState({});
@@ -46,33 +48,26 @@ const Profil = () => {
     e.preventDefault();
     setFormErrors (validate(formValues));
     setIsSubmitted(true);
-    //apiProfilUpdate(formValues);
-    // setFormValues(userData);
+    apiProfilUpdate(formValues);
+    setFormValues(userData)
   }
   
-  // const apiProfilUpdate = async (formValues) => {
-  //    await fetch('http://localhost:3000/Profil', {
-  //      method: 'POST',
-  //      headers: {
-  //        'Content-Type': 'application/json'
-  //     },
-  //      body: JSON.stringify(formValues)
-  //    })
-  //    .then(res => res.json())
-  //   .then(res => {
-  //      console.log(res);
-  //    })
-  // }
+  const apiProfilUpdate = async (formValues) => {
+    formValues = { userId : id, ...formValues}
+     axios.post("http://localhost:5000/Transformations", formValues).then(res => {
+      console.log(res.data);
+      fromRef.current.reset();
+  })
+     .catch(error => {
+      console.log(error);
+    });
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-      const body = await response.json();
-      setIstranformationValues(body);
-      console.log(istranformationValues);
-    };
-    fetchData();
-  }, [])
+    axios.get("http://localhost:5000/Transformations").then(res => {
+      setIstranformationValues(res.data);
+    })
+  }, [tranformationValues]);
 
 
 
@@ -124,7 +119,7 @@ const Profil = () => {
               <h3>Set your body information and goal</h3>
             </div>
             <div className='profil-form-inputs'>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} ref={fromRef}>
                 <label> Week data :</label>
                 <input type='date' placeholder='dd/mm/yy' name="date" value={formValues.date} onChange={handleChange} required/>
                 <label> Week goal :</label>
@@ -153,9 +148,9 @@ const Profil = () => {
             </div>
             <div className='profil-transformation-weeks'>
               {
-                istranformationValues.map(( item, index ) => {
+                tranformationValues.map(( item, index ) => {
                   return(
-                    <span className='week' key={ index } onClick={ () => {setOpen(true); setIsItem(item)} }>Transformation { index+1 }</span>
+                    <span className='week' key={ index } onClick={ () => { setOpen(true); setIsItem(item); } }>Transformation { index+1 }</span>
                   )
                 })
               }
@@ -189,17 +184,17 @@ const Profil = () => {
               <div className='weight-img'>
                 <img src={ profilWeight } alt="weight" />
                 <label htmlFor='idWeight'>Weight:</label>
-                <span id={idWeight} className='heightCm'>{ isItem.id || 0 }</span> Kg
+                <span id={ idWeight } className='heightCm'>{ isItem.weight || 0 }</span> Kg
               </div>
               <div className='height-img'>
                 <img src={ profilHeigth } alt="height" />
                 <label htmlFor='idHeight'>Height:</label>
-                <span id={idHeight} className='heightCm'>{ isItem.id  || 0 }</span> Cm
+                <span id={ idHeight } className='heightCm'>{ isItem.height  || 0 }</span> Cm
               </div>
             </div>
             <hr />
             <div className='popup-progress'>
-              <img src={ profilBody } alt="yourBodyImage" />
+              <img src={ isItem.image || profilBody } alt="yourBodyImage" />
             </div>
           </div>
       </div>

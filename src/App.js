@@ -1,7 +1,4 @@
-// import HomePages from "./pages/HomePages";
-// import ErrorPage from "./components/Error/ErrorPage";
 import { Route, Routes } from 'react-router-dom';
-// import ProfilPages from "./pages/ProfilPages";
 import { Suspense, lazy } from 'react';
 
 

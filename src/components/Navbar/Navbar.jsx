@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import './navbar.css';
 import './popup.css';
 import logo from '../../assets/Images/logoWithoutBg.png';
@@ -36,21 +36,20 @@ const Navbar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('email: ', isEmail, 'password: ', isPassword);
-    const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+    const response = await fetch('http://localhost:5000/Users', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
     });
     const data = await response.json();
-    const user = data.find(user => user.email === isEmail && user.website === isPassword);
+    const user = data.find(user => user.Email === isEmail && user.Password === isPassword);
     if(user) {
       setIsLogin(true);
       setIsUser(user);
       onCloseModal();
       console.log('user: ', user);
     }else{
-      setIsLogin(false);
       setIsError('Invalid email or password');
     }
   }
@@ -93,7 +92,7 @@ const Navbar = () => {
             <li>
               <button className='btn btn-navbar' onClick={onOpenModal}>Login</button></li> ): (
               <li className='isLogin'><LinkTo to={`/Profil/${isUser.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
-              <Link to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></Link></li>
+              <LinkTo to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></LinkTo></li>
               )
             }
         </ul>
@@ -136,7 +135,6 @@ const Navbar = () => {
       </div>
       </Modal>
       
-
        {/* <Login open={open} onClose={onCloseModal} /> */}
     </nav>
   ) 
