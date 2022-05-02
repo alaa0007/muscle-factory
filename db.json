@@ -51,30 +51,60 @@
     },
     {
       "userId": "1",
-      "date": "2022-05-01",
+      "date": "2022-05-10",
       "goal": "gain-muscle",
-      "height": "200",
-      "weight": "20",
-      "image": "",
-      "id": "DZ-4qWw"
+      "height": "74",
+      "weight": "47",
+      "id": "YXR-rGG"
     },
     {
       "userId": "1",
-      "date": "2022-05-01",
-      "goal": "lose-weight",
-      "height": "180",
-      "weight": "90",
-      "image": "",
-      "id": "LTwL6v0"
+      "image": {},
+      "date": "2022-05-04",
+      "goal": "gain-muscle",
+      "height": "74",
+      "weight": "47",
+      "id": "DPT5voQ"
     },
     {
-      "userId": "2",
-      "date": "2022-04-30",
+      "userId": "1",
+      "image": {},
+      "imageUrl": "https://res.cloudinary.com/dy6lmqeco/image/upload/v1651460528/xxyhlgct9ivwzmef5e26.png",
+      "date": "2022-05-26",
+      "goal": "lose-weight",
+      "height": "74",
+      "weight": "47",
+      "id": "q4OsKUe"
+    },
+    {
+      "userId": "1",
+      "image": {},
+      "imageUrl": "",
+      "date": "2022-05-18",
       "goal": "gain-muscle",
-      "height": "1.89",
-      "weight": "80",
-      "image": "",
-      "id": "GFNUmF4"
+      "height": "74",
+      "weight": "47",
+      "id": "vSzOe2Q"
+    },
+    {
+      "userId": "1",
+      "image": {},
+      "imageUrl": "https://res.cloudinary.com/dy6lmqeco/image/upload/v1651460834/jwsqeapbtwbteamm2xwa.png",
+      "date": "2022-05-18",
+      "goal": "gain-muscle",
+      "height": "74",
+      "weight": "47",
+      "id": "m2wE2Su"
+    },
+    {
+      "userId": "1",
+      "image": {},
+      "imageUrl": "",
+      "date": "2022-05-11",
+      "goal": "build-muscle",
+      "height": "74",
+      "weight": "47",
+      "id": "P4V9Pi6"
     }
   ]
 }

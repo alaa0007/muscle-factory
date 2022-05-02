@@ -6,7 +6,7 @@ import map from '../../assets/Images/map.png';
 const Contact = () => {
   return (
     <section id='contact'>
-      <div className='contact-container'>
+      <div className='contact-container'>     
         <div className='contact-left-side'>
         <div className='contact-title'>
           <h2>CONNECTED MUSCLES</h2>

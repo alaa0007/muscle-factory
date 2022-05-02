@@ -19,20 +19,16 @@ const Profil = () => {
   const { id } = useParams();
   const fromRef = useRef();
 
-  const userData = {
-    date : "",
-    goal : "",
-    height: "",
-    weight : "",
-    image : ""
-  }
+
   
-  const[formValues, setFormValues] = useState(userData);
+  const [formValues, setFormValues] = useState({});
   const[tranformationValues, setIstranformationValues] = useState([{}]);
   const[formErrors, setFormErrors] = useState({});
   const[isSubmitted, setIsSubmitted] = useState(false);
   const[isItem, setIsItem] = useState({});
   const[open, setOpen] = useState(false);
+  const[isImage, setIsImage] = useState(null);
+  const[isImageUrl, setIsImageUrl] = useState("");
 
   
   const onCloseModal = () => setOpen(false)
@@ -40,21 +36,39 @@ const Profil = () => {
 
 
   const handleChange = (e) => {
-    const {name, value} = e.target
+    const {name, value} = e.target;
     setFormValues({...formValues, [name]: value})
   }
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await uploadImg();
     setFormErrors (validate(formValues));
     setIsSubmitted(true);
-    apiProfilUpdate(formValues);
-    setFormValues(userData)
+    await apiProfilUpdate(formValues);
+    console.log(formValues);
+    // setFormValues({});
   }
+
+
+
+  const uploadImg = async () =>  {
+    const fromImg = new FormData();
+    fromImg.append('file', isImage);
+    fromImg.append('upload_preset', 'schascqs');
+    await axios.post("https://api.cloudinary.com/v1_1/dy6lmqeco/upload", fromImg)
+    .then(res => {
+      console.log(res.data.secure_url);
+      setIsImageUrl(res.data.secure_url);
+      console.log(isImageUrl);
+    });
+  }
+
   
   const apiProfilUpdate = async (formValues) => {
-    formValues = { userId : id, ...formValues}
-     axios.post("http://localhost:5000/Transformations", formValues).then(res => {
+    formValues = { userId : id, image: isImage, imageUrl: isImageUrl , ...formValues }
+    await axios.post("http://localhost:5000/Transformations", formValues).then(res => {
       console.log(res.data);
       fromRef.current.reset();
   })
@@ -91,7 +105,6 @@ const Profil = () => {
   useEffect(() => {
       if(Object.keys(formErrors).length === 0 && isSubmitted) {
         console.log("form submitted");
-        console.log(formValues);
       }
   },[formErrors]);
 
@@ -121,20 +134,20 @@ const Profil = () => {
             <div className='profil-form-inputs'>
               <form onSubmit={handleSubmit} ref={fromRef}>
                 <label> Week data :</label>
-                <input type='date' placeholder='dd/mm/yy' name="date" value={formValues.date} onChange={handleChange} required/>
+                <input type='date' placeholder='dd/mm/yy' name="date" value={ formValues.date } onChange={handleChange} required/>
                 <label> Week goal :</label>
-                <select name="goal" value={formValues.goal} onChange={handleChange} required>
+                <select name="goal" value={ formValues.goal } onChange={handleChange} required>
                   <option value="nothing">Select your goal</option>
                   <option value="lose-weight">Lose weight</option>
                   <option value="build-muscle">Build muscle</option>
                   <option value="gain-muscle">Gain muscle</option>
                 </select>
                 <label> Body Height :</label>
-                <input type='text' placeholder='180' className='height' name="height" value={formValues.height} onChange={handleChange} required/>Cm
+                <input type='text' placeholder='180' className='height' name="height" value={ formValues.height } onChange={handleChange} required/>Cm
                 <label className='space'> Body Weight :</label>
-                <input type='text' placeholder='80' className='weight' name="weight" value={formValues.weight} onChange={handleChange} required/>Kg
-                <label htmlFor={idImage} className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
-                <input type="file" id={idImage} name="image" accept="image/*" value={formValues.image} onChange={handleChange}  hidden/>              
+                <input type='text' placeholder='80' className='weight' name="weight" value={ formValues.weight } onChange={handleChange} required/>Kg
+                <label htmlFor={ idImage } className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
+                <input type="file" id={ idImage } accept="image/*" value={ formValues.image } onChange={(e) => {setIsImage(e.target.files[0]);}}  hidden/>              
                 <div className='btn-form'>
                 <button className='btn btn-profil'>Save</button>
                 </div>
@@ -194,12 +207,12 @@ const Profil = () => {
             </div>
             <hr />
             <div className='popup-progress'>
-              <img src={ isItem.image || profilBody } alt="yourBodyImage" />
+              <img src={ isItem.imageUrl || profilBody } alt="yourBodyImage" />
             </div>
           </div>
       </div>
       </Modal> 
-
+      <div className="elfsight-app-2e1fe743-6d7e-470b-bd7d-e2150988f7e1"></div>
     </div>
   )
 }

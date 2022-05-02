@@ -67,6 +67,10 @@
     background: var(--color-white);
 }
 
+.questions-container{
+    margin: 1rem 7rem;
+}
+
 
 /*************************** MEDIA QUERIES MEDUIM DEVICES*****************************/
 

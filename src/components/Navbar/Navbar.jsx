@@ -11,13 +11,10 @@ import { GiHouseKeys } from 'react-icons/gi';
 import { Link as LinkTo } from 'react-router-dom';
 import  shutDown  from '../../assets/Images/shutdown.png';
 import { Link  } from 'react-scroll';
-
-
-
+import axios from 'axios';
+import { setLogin } from '../../features/users';
 
 const Navbar = () => {
-
-  let Currentuser ={}
 
   const [isActive, setIsActive] = useState('#');
   const [isNavActive, setIsNavActive] = useState(false);
@@ -25,39 +22,40 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [isEmail, setIsEmail] = useState('');
   const [isPassword, setIsPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(false);
   const [isError, setIsError] = useState('');
-  const [isUser, setIsUser] = useState(Currentuser);
+  const [isLoggin, setIsLoggin] = useState(false);
+  const [user, setUser] = useState({});
 
-  
+
+
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('email: ', isEmail, 'password: ', isPassword);
-    const response = await fetch('http://localhost:5000/Users', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
+    axios.get('http://localhost:5000/Users')
+    .then(res => {
+      const user = res.data.find(user => user.Email === isEmail && user.Password === isPassword);
+      if(user){
+        setUser(window.localStorage.setItem('user', JSON.stringify(user)));
+        setIsLoggin(window.localStorage.setItem('isLoggin',  JSON.stringify(true)));
+        onCloseModal();
+      }
+      else{
+        setIsError('Email ou mot de passe incorrect');
       }
     });
-    const data = await response.json();
-    const user = data.find(user => user.Email === isEmail && user.Password === isPassword);
-    if(user) {
-      setIsLogin(true);
-      setIsUser(user);
-      onCloseModal();
-      console.log('user: ', user);
-    }else{
-      setIsError('Invalid email or password');
-    }
   }
 
   const handleLogOut = () => {
-    setIsLogin(false);
-    setIsUser({});
+    setUser(window.localStorage.setItem('user', JSON.stringify({})));
+    setIsLoggin(window.localStorage.setItem('isLoggin', JSON.stringify(false)));
   }
+
+  useEffect(() => {
+    setUser(JSON.parse(window.localStorage.getItem('user')));
+    setIsLoggin(JSON.parse(window.localStorage.getItem('isLoggin')));
+  }, [isLoggin]);
 
   useEffect(() => {
     setIsError('');
@@ -88,10 +86,10 @@ const Navbar = () => {
             <li><Link to="header" smooth="true"> <img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => {setIsActive('#')}}/></Link></li>
             <li className='navbar_item'><Link to="coaches" smooth="true" onClick={ () => {setIsActive('#coaches')} }  className={ isActive ==="#coaches" ? 'active' : '' }> Coaches </Link></li>
             <li className='navbar_item'><Link to="contact" smooth="true" onClick={ () => {setIsActive('#contact')} }  className={ isActive ==="#contact" ? 'active' : '' }> Contact </Link></li>
-            { !isLogin ? (
+            { !isLoggin ? (
             <li>
               <button className='btn btn-navbar' onClick={onOpenModal}>Login</button></li> ): (
-              <li className='isLogin'><LinkTo to={`/Profil/${isUser.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
+              <li className='isLogin'><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
               <LinkTo to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></LinkTo></li>
               )
             }
