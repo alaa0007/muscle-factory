@@ -98,6 +98,14 @@
     font-size: 2.5rem;
 }
 
+.fCONkY a{
+    visibility: hidden !important;
+}
+
+
+.llyszt div:nth-child(9){
+    visibility: hidden !important;
+}
 
 /*************************** MEDIA QUERIES MEDIUM DEVICES*****************************/
 @media screen and (max-width : 900px) {

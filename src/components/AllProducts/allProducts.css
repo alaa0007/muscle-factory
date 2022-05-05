@@ -1,0 +1,39 @@
+
+.all-products-header{
+    background-color: var(--color-dark);
+    width: 100%;
+    height: 4.5vw;
+    position: fixed;
+}
+
+.all-products-body{
+    padding-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-products-body-header h2{
+    font-size: 4rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    margin-right: 3rem;
+}
+
+.all-products-body-content-filter{
+
+}
+
+.all-products-body-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 85%;
+    margin: 5rem;
+    margin-bottom: 5rem;
+}
+
+
+
+

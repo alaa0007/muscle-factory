@@ -1,6 +1,6 @@
 
 .top{
-    background-color: #000; 
+    background-color: var(--color-dark); 
     width: 100%;
     height: 70px;
     position: fixed;
@@ -298,6 +298,9 @@ hr{
     height: 10rem;
 }
 
+.FloatingSmall__Container-sc-15i4pvi-0 a{
+    visibility: hidden !important;
+}
 
 /*************************** MEDIA QUERIES LARGE DEVICES*****************************/
 @media screen and (max-width : 1250px) {

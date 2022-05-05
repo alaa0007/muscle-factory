@@ -19,16 +19,15 @@ const Profil = () => {
   const { id } = useParams();
   const fromRef = useRef();
 
-
-  
-  const [formValues, setFormValues] = useState({});
+  const[isImageUrl, setIsImageUrl] = useState("");
+  const[isformValues, setFormValues] = useState({});
   const[tranformationValues, setIstranformationValues] = useState([{}]);
   const[formErrors, setFormErrors] = useState({});
   const[isSubmitted, setIsSubmitted] = useState(false);
   const[isItem, setIsItem] = useState({});
   const[open, setOpen] = useState(false);
   const[isImage, setIsImage] = useState(null);
-  const[isImageUrl, setIsImageUrl] = useState("");
+  
 
   
   const onCloseModal = () => setOpen(false)
@@ -37,19 +36,19 @@ const Profil = () => {
 
   const handleChange = (e) => {
     const {name, value} = e.target;
-    setFormValues({...formValues, [name]: value})
+    setFormValues({...isformValues, [name]: value})
   }
 
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await uploadImg();
-    setFormErrors (validate(formValues));
+    await uploadImg()
+    setFormErrors (validate(isformValues));
     setIsSubmitted(true);
-    await apiProfilUpdate(formValues);
-    console.log(formValues);
+    apiProfilUpdate(isformValues);
     // setFormValues({});
   }
+
 
 
 
@@ -66,9 +65,9 @@ const Profil = () => {
   }
 
   
-  const apiProfilUpdate = async (formValues) => {
-    formValues = { userId : id, image: isImage, imageUrl: isImageUrl , ...formValues }
-    await axios.post("http://localhost:5000/Transformations", formValues).then(res => {
+  const apiProfilUpdate = (formValues) => {
+    formValues = { userId : id, image: isImage, imageUrl : isImageUrl, ...formValues}
+    axios.post("http://localhost:5000/Transformations", formValues).then(res => {
       console.log(res.data);
       fromRef.current.reset();
   })
@@ -134,20 +133,20 @@ const Profil = () => {
             <div className='profil-form-inputs'>
               <form onSubmit={handleSubmit} ref={fromRef}>
                 <label> Week data :</label>
-                <input type='date' placeholder='dd/mm/yy' name="date" value={ formValues.date } onChange={handleChange} required/>
+                <input type='date' placeholder='dd/mm/yy' name="date" value={ isformValues.date } onChange={handleChange} required/>
                 <label> Week goal :</label>
-                <select name="goal" value={ formValues.goal } onChange={handleChange} required>
+                <select name="goal" value={ isformValues.goal } onChange={handleChange} required>
                   <option value="nothing">Select your goal</option>
                   <option value="lose-weight">Lose weight</option>
                   <option value="build-muscle">Build muscle</option>
                   <option value="gain-muscle">Gain muscle</option>
                 </select>
                 <label> Body Height :</label>
-                <input type='text' placeholder='180' className='height' name="height" value={ formValues.height } onChange={handleChange} required/>Cm
+                <input type='text' placeholder='180' className='height' name="height" value={ isformValues.height } onChange={handleChange} required/>Cm
                 <label className='space'> Body Weight :</label>
-                <input type='text' placeholder='80' className='weight' name="weight" value={ formValues.weight } onChange={handleChange} required/>Kg
+                <input type='text' placeholder='80' className='weight' name="weight" value={ isformValues.weight } onChange={handleChange} required/>Kg
                 <label htmlFor={ idImage } className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
-                <input type="file" id={ idImage } accept="image/*" value={ formValues.image } onChange={(e) => {setIsImage(e.target.files[0]);}}  hidden/>              
+                <input type="file" id={ idImage } accept="image/*" value={ isformValues.image } onChange={(e) => {setIsImage(e.target.files[0]);}}  hidden/>              
                 <div className='btn-form'>
                 <button className='btn btn-profil'>Save</button>
                 </div>

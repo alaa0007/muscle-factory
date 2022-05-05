@@ -5,6 +5,7 @@ import Coaches from '../components/Coaches/Coaches'
 import Navbar from '../components/Navbar/Navbar'
 import Contact from '../components/Contact/Contact'
 import Footer from '../components/Footer/Footer'
+import Products from '../components/Products/Products'
 
 const HomePages = () => {
   return (
@@ -13,6 +14,7 @@ const HomePages = () => {
     <Header />
     <About/>
     <Coaches />  
+    <Products />
     <Contact />
     <Footer />
     </>
