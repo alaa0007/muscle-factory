@@ -5,6 +5,7 @@ import './allProducts.css'
 
 const AllProducts = () => {
   return (
+    
     <div className='all-products-container'>
         <div className='all-products-header'>
         </div>

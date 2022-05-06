@@ -5,7 +5,7 @@ nav{
     width: 100vw;
     position: fixed;
     background: transparent; 
-    z-index: 2;
+    z-index: 99;
 }
 
 nav.active{
@@ -97,6 +97,57 @@ button{
 .btn-login:hover{
     border: 1px solid var(--color-dark);
 }
+
+.qrcode-modal{
+    margin-top: 2.5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.qrCode{
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.qrCode:hover{
+    color: var(--color-light);
+}
+
+hr{
+    color: rgb(255, 255, 255) !important;
+    background-color: aliceblue;
+    width: 100%;
+}
+
+
+.userDropDown{
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #00000095;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
 
 /*************************** MEDIA QUERIES Large DEVICES*****************************/
 @media screen and (min-width : 520px ) and (max-width : 1024px) {

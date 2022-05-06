@@ -47,14 +47,14 @@
 }
 
 .btn-product{
-    color: var(--color-dark);
-    border: 1px solid var(--color-dark);
+    color: var(--color-dark) !important;
+    border: 1px solid var(--color-dark) !important;
 }
 
 .btn-product:hover{
-    color: var(--color-white);
-    border: 1px solid var(--color-white);
-    background: var(--color-dark);
+    color: var(--color-white) !important;
+    border: 1px solid var(--color-white) !important;
+    background: var(--color-dark) !important;
 }
 
 .btn-cart:hover{
@@ -68,5 +68,31 @@
     background: #00789D;
     font-family: 'Saira Condensed', sans-serif;
     width: 10rem;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-size: 16px;
 }
 
+.eapps-widget:hover .eapps-widget-toolbar-panel{
+    opacity: 0 !important;
+}
+
+.eapps-widget-toolbar-panel-wrapper {
+    visibility: hidden;
+}
+
+
+#eapps-pricing-table-1 .eapps-pricing-table-column-2{
+    z-index: 0 !important;
+}
+#eapps-pricing-table-1 .eapps-pricing-table-column-3 {
+    z-index: 0 !important;
+}
+
+#eapps-pricing-table-1 .eapps-pricing-table-column-1{
+    z-index: 0 !important;
+}
+
+.train{
+    z-index: 0 !important;
+}

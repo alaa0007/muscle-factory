@@ -101,12 +101,12 @@ hr{
 }
 
 .btn-profil{
-    color: var(--color-white);
-    background-color: var(--color-dark);
+    color: var(--color-white) !important;
+    background-color: var(--color-dark) !important;
 }
 
 .btn-profil:hover{
-    border: 1px solid var(--color-dark);
+    border: 1px solid var(--color-dark) !important;
 }
 
 .profil-form{

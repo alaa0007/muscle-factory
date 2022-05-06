@@ -9,10 +9,14 @@ import { Modal } from 'react-responsive-modal';
 import { MdEmail } from 'react-icons/md';
 import { GiHouseKeys } from 'react-icons/gi';
 import { Link as LinkTo } from 'react-router-dom';
-import  shutDown  from '../../assets/Images/shutdown.png';
 import { Link  } from 'react-scroll';
 import axios from 'axios';
-import { setLogin } from '../../features/users';
+import QrCode from 'qrcode';
+import { RiArrowDropDownLine } from 'react-icons/ri';
+
+
+
+
 
 const Navbar = () => {
 
@@ -20,16 +24,22 @@ const Navbar = () => {
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [open, setOpen] = useState(false);
+  const [OpenQrcode, setOpenQrcode] = useState(false);
   const [isEmail, setIsEmail] = useState('');
   const [isPassword, setIsPassword] = useState('');
   const [isError, setIsError] = useState('');
   const [isLoggin, setIsLoggin] = useState(false);
   const [user, setUser] = useState({});
+  const [qrCodeImg, setQrCodeImg] = useState('');
+  const [dropDown, setDropDown] = useState(false);
 
 
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+
+  const onOpenModalQrcode = () => setOpenQrcode(true);
+  const onCloseModalQrcode = () => setOpenQrcode(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +57,13 @@ const Navbar = () => {
     });
   }
 
+  useEffect(() => {
+    QrCode.toDataURL("I'ma here").then(url => {
+      setQrCodeImg(url);
+    });
+  } , []);
+
+  
   const handleLogOut = () => {
     setUser(window.localStorage.setItem('user', JSON.stringify({})));
     setIsLoggin(window.localStorage.setItem('isLoggin', JSON.stringify(false)));
@@ -83,14 +100,27 @@ const Navbar = () => {
             <li className='navbar_item'><LinkTo to="/"  onClick={ () => {setIsActive('#'); window.scrollTo(0,0)} }  className={ isActive ==="#" ? 'active' : '' }> Home </LinkTo></li>
             <li className='navbar_item'><Link to="about" smooth="true" onClick={ () => {setIsActive('#about')}}  className={ isActive ==="#about" ? 'active' : '' }> About </Link></li>
             <li className='navbar_item'><Link to="activities" smooth="true"  onClick={ () => {setIsActive('#activities')} }  className={ isActive ==="#activities" ? 'active' : '' }> Activities </Link></li>
-            <li><Link to="header" smooth="true"> <img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => {setIsActive('#')}}/></Link></li>
             <li className='navbar_item'><Link to="coaches" smooth="true" onClick={ () => {setIsActive('#coaches')} }  className={ isActive ==="#coaches" ? 'active' : '' }> Coaches </Link></li>
+            <li><Link to="header" smooth="true"> <img src={ logo } alt="muscleFactoryLogo" className='navbar_logo' onClick={ () => {setIsActive('#')}}/></Link></li>
+            <li className='navbar_item'><Link to="train" smooth="true" onClick={ () => {setIsActive('#train')} }  className={ isActive ==="#train" ? 'active' : '' }> Train pack </Link></li>
+            <li className='navbar_item'><Link to="products" smooth="true" onClick={ () => {setIsActive('#products')} }  className={ isActive ==="#products" ? 'active' : '' }> Products </Link></li>
             <li className='navbar_item'><Link to="contact" smooth="true" onClick={ () => {setIsActive('#contact')} }  className={ isActive ==="#contact" ? 'active' : '' }> Contact </Link></li>
             { !isLoggin ? (
             <li>
               <button className='btn btn-navbar' onClick={onOpenModal}>Login</button></li> ): (
-              <li className='isLogin'><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
-              <LinkTo to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></LinkTo></li>
+              // <li className='isLogin'><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
+              // <LinkTo to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></LinkTo></li>
+              <div>
+                <div class="dropdown">
+                <div onClick={() => setDropDown(!dropDown)} className="userDropDown"> {user.Email} <RiArrowDropDownLine/> </div>
+                  <div className='dropdown-content'>  
+                   <li><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')}>Profil</LinkTo></li>
+                  <li><span className='qrCode' onClick={onOpenModalQrcode}>Your Pass</span></li>
+                  <hr/>
+                  <li><LinkTo to='/'><span onClick={handleLogOut}> Logout </span></LinkTo></li> 
+                  </div>
+                  </div>
+              </div>
               )
             }
         </ul>
@@ -101,8 +131,26 @@ const Navbar = () => {
         { isMobile  ? <AiOutlineClose /> : <AiOutlineMenuFold /> }
         </a>
         </div>
+
+
+        { /* QRCode popup */}
+        <Modal open={OpenQrcode} onClose={onCloseModalQrcode} center classNames={{
+          overlayAnimationIn: 'customEnterOverlayAnimation',
+          overlayAnimationOut: 'customLeaveOverlayAnimation',
+          modalAnimationIn: 'customEnterModalAnimation',
+          modalAnimationOut: 'customLeaveModalAnimation',
+        }}
+        animationDuration={500}>
+          <div className='qrcode-modal'>
+            <img src={qrCodeImg} alt="qrcode" className='qrcode-img'/>
+          </div>
+      </Modal>
         
-        <Modal open={open} onClose={onCloseModal} center classNames={{
+
+
+
+      { /* Login popup */}
+      <Modal open={open} onClose={onCloseModal} center classNames={{
           overlayAnimationIn: 'customEnterOverlayAnimation',
           overlayAnimationOut: 'customLeaveOverlayAnimation',
           modalAnimationIn: 'customEnterModalAnimation',
@@ -132,6 +180,9 @@ const Navbar = () => {
           </div>
       </div>
       </Modal>
+
+
+
       
        {/* <Login open={open} onClose={onCloseModal} /> */}
     </nav>

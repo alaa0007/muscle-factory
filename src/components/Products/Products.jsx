@@ -6,7 +6,11 @@ import './products.css'
 
 const Products = () => {
   return (
-    <div className='products-container'>
+    <>
+    <div id="train" className='train'>
+    <div  className="elfsight-app-f39a8d3d-542f-4ef8-b8de-0c736a091242"></div>
+    </div>
+    <div className='products-container' id='products'>
         <div className='products-header'>
             <h1>Trending Products</h1>
         </div>
@@ -20,6 +24,7 @@ const Products = () => {
             <Link to='/Products' className='btn btn-product'>See More</Link>
         </div>
     </div>
+    </>
   )
 }
 
