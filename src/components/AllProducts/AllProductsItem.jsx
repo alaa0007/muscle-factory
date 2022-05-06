@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../assets/Images/logoWithoutBg.png';
 
-const ProductItem = () => {
+const AllProductsItem = () => {
   return (
     <div className='product-item'>
     <div className='product-image'>
@@ -16,4 +16,4 @@ const ProductItem = () => {
   )
 }
 
-export default ProductItem
+export default AllProductsItem

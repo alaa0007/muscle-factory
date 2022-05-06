@@ -60,11 +60,11 @@
 .btn-cart:hover{
     color: #00789D;
     border: 1px solid #00789D;
+    background-color: aliceblue;
 }
 
 .btn-cart{
     color: var(--color-white);
-    border: 1px solid var(--color-white);
     background: #00789D;
     font-family: 'Saira Condensed', sans-serif;
     width: 10rem;

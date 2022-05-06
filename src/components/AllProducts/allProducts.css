@@ -1,18 +1,120 @@
 
 .all-products-header{
-    background-color: var(--color-dark);
     width: 100%;
-    height: 4.5vw;
-    position: fixed;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../../assets/Images/header.jpg);
+    z-index: 1;
 }
 
-.all-products-body{
-    padding-top: 7rem;
+.all-products-header h1{
+    position: absolute;
+    top: 25%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-size: 3.2rem;
+    letter-spacing: 8px;
+    font-family: 'Saira Condensed', sans-serif;
+}
+
+.all-products-body-content-filter-item-categorie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+}
+
+.filter{
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-icon{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
+
+.filter-container{
+    display: flex;
+    max-width: 400px;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+}
+
+.search{
+    width: 200px;
+    height: 30px;
+    margin: 0.5rem 1rem;
+}
+
+.filter-search{
+    border: 1px solid rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.search-btn{
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+
+.filter-container-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products-categorie{
+    position: absolute;
+    top: 45%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categorie-item{
+    margin: 0.5rem 3rem;
+}
+
+.categorie-item h4{
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.categorie-item h5{
+    font-weight: 200;
+}
+
+.products-categorie-content{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: aliceblue;
+    margin: 1rem 2rem;
+    width: 60rem;
+}
+
+.all-products-body{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 
 .all-products-body-header h2{
     font-size: 4rem;
@@ -22,7 +124,15 @@
 }
 
 .all-products-body-content-filter{
+    max-width: 85%;
+}
 
+
+
+.all-products-body-content-filter-item-categorie{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .all-products-body-content{
@@ -35,5 +145,66 @@
 }
 
 
+.all-products-body-content .product-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.055);
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.all-products-body-content .product-item .product-image{
+    width: 90%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.all-products-body-content .product-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-cart:hover{
+    color: #00789D;
+    border: 1px solid #00789D;
+    background-color: aliceblue;
+}
+
+.btn-cart{
+    color: var(--color-white);
+    background: #00789D;
+    font-family: 'Saira Condensed', sans-serif;
+    width: 10rem;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-size: 16px;
+}
 
 
+/*************************** MEDIA QUERIES Large DEVICES*****************************/
+@media screen and (max-width : 1024px) {
+    .products-categorie-content{
+        display: none;
+    }
+    .all-products-header{
+        height: 30vh;
+    }.all-products-header h1{
+        top: 18%;
+    }
+    .all-products-body-content-filter-item-categorie{
+        gap: 1rem;
+    }
+
+}
+
+  /*************************** MEDIA QUERIES SMALL DEVICES*****************************/
+  @media screen and (max-width : 450px) {
+    .all-products-body-content{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+}
