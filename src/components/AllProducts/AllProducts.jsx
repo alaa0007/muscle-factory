@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react'
 import './allProducts.css'
-import AllProductsItem from './AllProductsItem'
+import ProductsItem from '../Products/ProductItem'
 import { IoIosOptions } from 'react-icons/io'
 import { BsSearch } from 'react-icons/bs'
-
+import axios from 'axios'
 
 const AllProducts = () => {
+  const [products, setProducts] = useState([])
+
+
+  useEffect(() => {
+    axios.get('https://projet-tekup.herokuapp.com/Product/').then(res => {
+      setProducts(res.data)
+      console.log(res.data);
+    });
+    },[])
+
+
   return (
-    
     <div className='all-products-container'>
         <div className='all-products-header'>
             <h1>PRODUCTS</h1>
@@ -92,11 +102,13 @@ const AllProducts = () => {
                 </div>
             </div>
             <div className='all-products-body-content'>
-                <AllProductsItem/>
-                <AllProductsItem/>
-                <AllProductsItem/>
-                <AllProductsItem/>
-                <AllProductsItem/>
+              {
+                products.map(( product, index ) => {
+                  return ( 
+                    <ProductsItem key={ index } product={ product } />
+                  )
+                })
+              }
             </div>
         </div>
     </div>

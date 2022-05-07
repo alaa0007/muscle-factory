@@ -15,7 +15,7 @@ const HomePages = () => {
     <About/>
     <Coaches />  
     <Products />
-    <Contact />
+    <Contact /> 
     <Footer />
     </>
   )

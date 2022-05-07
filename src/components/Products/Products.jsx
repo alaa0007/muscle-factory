@@ -1,10 +1,20 @@
-import React from 'react'
+import React,{ useState , useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import ProductItem from './ProductItem'
 import './products.css'
-
+import axios from 'axios'
 
 const Products = () => {
+  const [products, setProducts] = useState([])
+  
+
+  useEffect(() => {
+    axios.get('https://projet-tekup.herokuapp.com/Product/').then(res => {
+      setProducts(res.data)
+      console.log(res.data);
+    })
+  },[])
+
   return (
     <>
     <div id="train" className='train'>
@@ -15,10 +25,15 @@ const Products = () => {
             <h1>Trending Products</h1>
         </div>
         <div className='products-body'>
+          {/* <ProductItem/>
           <ProductItem/>
           <ProductItem/>
-          <ProductItem/>
-          <ProductItem/>
+          <ProductItem/> */}
+          {
+            products.map((product ,index) => { 
+              return <ProductItem key={index} product={product}/>
+            })
+          }
         </div>
         <div className="product-footer">
             <Link to='/Products' className='btn btn-product'>See More</Link>
