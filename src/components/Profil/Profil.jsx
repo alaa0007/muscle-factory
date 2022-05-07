@@ -67,7 +67,7 @@ const Profil = () => {
   
   const apiProfilUpdate = (formValues) => {
     formValues = { userId : id, image: isImage, imageUrl : isImageUrl, ...formValues}
-    axios.post("http://localhost:5000/Transformations", formValues).then(res => {
+    axios.post("https://projet-tekup.herokuapp.com/Transformation/", formValues).then(res => {
       console.log(res.data);
       fromRef.current.reset();
   })
@@ -77,10 +77,11 @@ const Profil = () => {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:5000/Transformations").then(res => {
+    axios.get("https://projet-tekup.herokuapp.com/Transformation/"+id).then(res => {
       setIstranformationValues(res.data);
+      console.log(res.data);
     })
-  }, [tranformationValues]);
+  }, []);
 
 
 
@@ -196,17 +197,17 @@ const Profil = () => {
               <div className='weight-img'>
                 <img src={ profilWeight } alt="weight" />
                 <label htmlFor='idWeight'>Weight:</label>
-                <span id={ idWeight } className='heightCm'>{ isItem.weight || 0 }</span> Kg
+                <span id={ idWeight } className='heightCm'>{ isItem.Body_Weight || 0 }</span> Kg
               </div>
               <div className='height-img'>
                 <img src={ profilHeigth } alt="height" />
                 <label htmlFor='idHeight'>Height:</label>
-                <span id={ idHeight } className='heightCm'>{ isItem.height  || 0 }</span> Cm
+                <span id={ idHeight } className='heightCm'>{ isItem.Body_Height  || 0 }</span> Cm
               </div>
             </div>
             <hr />
             <div className='popup-progress'>
-              <img src={ isItem.imageUrl || profilBody } alt="yourBodyImage" />
+              <img src={ isItem.Image_Link || profilBody } alt="yourBodyImage" />
             </div>
           </div>
       </div>

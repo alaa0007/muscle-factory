@@ -43,8 +43,9 @@ const Navbar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.get('http://localhost:5000/Users')
+    axios.get('https://projet-tekup.herokuapp.com/Member/')
     .then(res => {
+      console.log(res.data);
       const user = res.data.find(user => user.Email === isEmail && user.Password === isPassword);
       if(user){
         setUser(window.localStorage.setItem('user', JSON.stringify(user)));
@@ -58,10 +59,15 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    QrCode.toDataURL("I'ma here").then(url => {
+    let QRCode = "Nothing"
+    if(isLoggin === true){
+    QRCode = user.Subscription_expire_Date;
+    }
+    console.log(QRCode);
+    QrCode.toDataURL(QRCode).then(url => {
       setQrCodeImg(url);
     });
-  } , []);
+  } , [isLoggin]);
 
   
   const handleLogOut = () => {
