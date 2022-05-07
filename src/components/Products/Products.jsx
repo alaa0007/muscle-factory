@@ -11,7 +11,6 @@ const Products = () => {
   useEffect(() => {
     axios.get('https://projet-tekup.herokuapp.com/Product/').then(res => {
       setProducts(res.data)
-      console.log(res.data);
     })
   },[])
 
@@ -25,12 +24,8 @@ const Products = () => {
             <h1>Trending Products</h1>
         </div>
         <div className='products-body'>
-          {/* <ProductItem/>
-          <ProductItem/>
-          <ProductItem/>
-          <ProductItem/> */}
           {
-            products.map((product ,index) => { 
+            products.slice(0,4).map((product ,index) => { 
               return <ProductItem key={index} product={product}/>
             })
           }

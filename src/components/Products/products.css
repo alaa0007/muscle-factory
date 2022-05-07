@@ -33,18 +33,21 @@
     padding: 1rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
 .products-body .product-item .product-image{
-    width: 90%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width: auto;
+    height: 15rem;
 }
+
 .products-body .product-item img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 
 .btn-product{
     color: var(--color-dark) ;

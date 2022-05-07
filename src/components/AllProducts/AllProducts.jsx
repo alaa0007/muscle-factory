@@ -25,7 +25,7 @@ const AllProducts = () => {
               <div className='products-categorie-content'> 
               <div className='categorie-item'>
                 <h4>WHEY PROTEIN</h4> 
-                <h5>3 Products</h5> 
+                <h5>{products.length} Products</h5> 
               </div>
               <div className='categorie-item'>
                 <h4>WEIGHT GAINER</h4> 
@@ -69,28 +69,28 @@ const AllProducts = () => {
                         </div>
                         <div className='filter-container'>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>WHEY PROTEIN</h4>
+                            <input type="checkbox" value='WHEY PROTEIN' name='WHEY PROTEIN'/> <h4>WHEY PROTEIN</h4>
                           </div>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>SHAKERS</h4>
+                            <input type="checkbox" value='SHAKERS' name='SHAKERS'/> <h4>SHAKERS</h4>
                           </div>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>ACCESSORIES</h4>
+                            <input type="checkbox" value='ACCESSORIES' name='ACCESSORIES'/> <h4>ACCESSORIES</h4>
                           </div>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>CASEIN</h4>
+                            <input type="checkbox" value='CASEIN' name='CASEIN' /> <h4>CASEIN</h4>
                           </div>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>T-SHIRT</h4>
+                            <input type="checkbox" value='T-SHIRT' name='T-SHIRT'/> <h4>T-SHIRT</h4>
                           </div>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>WEIGHT GAINER</h4>
+                            <input type="checkbox" value='WEIGHT GAINER' name='WEIGHT GAINER'/> <h4>WEIGHT GAINER</h4>
                           </div>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>MULTIVITAMIN</h4>
+                            <input type="checkbox" value='MULTIVITAMIN' name='MULTIVITAMIN'/> <h4>MULTIVITAMIN</h4>
                           </div>
                           <div className='filter-container-item'>
-                            <input type="checkbox" /> <h4>PACK</h4>
+                            <input type="checkbox" value='PACK' name='PACK'/> <h4>PACK</h4>
                           </div>
                         </div>
                         </div>

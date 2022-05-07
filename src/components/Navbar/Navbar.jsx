@@ -113,11 +113,11 @@ const Navbar = () => {
             <li className='navbar_item'><Link to="contact" smooth="true" onClick={ () => {setIsActive('#contact')} }  className={ isActive ==="#contact" ? 'active' : '' }> Contact </Link></li>
             { !isLoggin ? (
             <li>
-              <button className='btn btn-navbar' onClick={onOpenModal}>Login</button></li> ): (
+              <button className='btn btn-navbar btn-login' onClick={onOpenModal}>Login</button></li> ): (
               // <li className='isLogin'><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
               // <LinkTo to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></LinkTo></li>
               <div>
-                <div class="dropdown">
+                <div className="dropdown">
                 <div onClick={() => setDropDown(!dropDown)} className="userDropDown"> {user.Email} <RiArrowDropDownLine/> </div>
                   <div className='dropdown-content'>  
                    <li><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')}>Profil</LinkTo></li>
