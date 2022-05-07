@@ -4,6 +4,8 @@ import ProductsItem from '../Products/ProductItem'
 import { IoIosOptions } from 'react-icons/io'
 import { BsSearch } from 'react-icons/bs'
 import axios from 'axios'
+import CategoieItem from './CategoieItem'
+import ProductFilter from './ProductFilter'
 
 const AllProducts = () => {
   const [products, setProducts] = useState([])
@@ -23,38 +25,14 @@ const AllProducts = () => {
             <h1>PRODUCTS</h1>
             <div className='products-categorie'>
               <div className='products-categorie-content'> 
-              <div className='categorie-item'>
-                <h4>WHEY PROTEIN</h4> 
-                <h5>{products.length} Products</h5> 
-              </div>
-              <div className='categorie-item'>
-                <h4>WEIGHT GAINER</h4> 
-                <h5>3 Products</h5> 
-              </div>
-              <div className='categorie-item'>
-                <h4>CASEIN</h4> 
-                <h5>3 Products</h5> 
-              </div>
-              <div className='categorie-item'>
-                <h4>PACK</h4> 
-                <h5>3 Products</h5> 
-              </div>
-              <div className='categorie-item'>
-                <h4>MULTIVITAMIN</h4> 
-                <h5>3 Products</h5> 
-              </div>
-              <div className='categorie-item'>
-                <h4>ACCESSORIES</h4> 
-                <h5>3 Products</h5> 
-              </div>
-              <div className='categorie-item'>
-                <h4>T-SHIRT</h4> 
-                <h5>3 Products</h5> 
-              </div>
-              <div className='categorie-item'>
-                <h4>SHAKERS</h4> 
-                <h5>3 Products</h5> 
-              </div>
+                <CategoieItem name="WHEY PROTEIN" numbre="3"/>
+                <CategoieItem name="WEIGHT GAINER" numbre="3"/>
+                <CategoieItem name="CASEIN" numbre="3"/>
+                <CategoieItem name="PACK" numbre="3"/>
+                <CategoieItem name="MULTIVITAMIN" numbre="3"/>
+                <CategoieItem name="ACCESSORIES" numbre="3"/>
+                <CategoieItem name="T-SHIRT" numbre="3"/>
+                <CategoieItem name="SHAKERS" numbre="3"/>
               </div>
             </div>
         </div>
@@ -68,30 +46,14 @@ const AllProducts = () => {
                           <IoIosOptions/>
                         </div>
                         <div className='filter-container'>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='WHEY PROTEIN' name='WHEY PROTEIN'/> <h4>WHEY PROTEIN</h4>
-                          </div>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='SHAKERS' name='SHAKERS'/> <h4>SHAKERS</h4>
-                          </div>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='ACCESSORIES' name='ACCESSORIES'/> <h4>ACCESSORIES</h4>
-                          </div>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='CASEIN' name='CASEIN' /> <h4>CASEIN</h4>
-                          </div>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='T-SHIRT' name='T-SHIRT'/> <h4>T-SHIRT</h4>
-                          </div>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='WEIGHT GAINER' name='WEIGHT GAINER'/> <h4>WEIGHT GAINER</h4>
-                          </div>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='MULTIVITAMIN' name='MULTIVITAMIN'/> <h4>MULTIVITAMIN</h4>
-                          </div>
-                          <div className='filter-container-item'>
-                            <input type="checkbox" value='PACK' name='PACK'/> <h4>PACK</h4>
-                          </div>
+                          <ProductFilter filterName="WHEY PROTEIN"/>
+                          <ProductFilter filterName="SHAKERS"/>
+                          <ProductFilter filterName="ACCESSORIES"/>
+                          <ProductFilter filterName="CASEIN"/>
+                          <ProductFilter filterName="T-SHIRT"/>
+                          <ProductFilter filterName="WEIGHT GAINER"/>
+                          <ProductFilter filterName="MULTIVITAMIN"/>
+                          <ProductFilter filterName="PACk"/>
                         </div>
                         </div>
                         <div className='filter-search'>
