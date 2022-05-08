@@ -184,9 +184,16 @@
     letter-spacing: 7px;
     font-size: 16px;
 }
+.filter-container-item label{
+    cursor: pointer;
+}
 
+.checkbox-filter{
+    color: var(--color-white);
+    background-color: var(--color-dark);    
+}
 
-/*************************** MEDIA QUERIES Large DEVICES*****************************/
+/*************************** MEDIA QUERIES LARGE DEVICES*****************************/
 @media screen and (max-width : 1024px) {
     .products-categorie-content{
         display: none;

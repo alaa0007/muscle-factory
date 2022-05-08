@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux'
 const AllProducts = () => {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
-  const [filteredProducts, setFilteredProducts] = useState([])
   const [searchProduct, setSearchProduct] = useState('')
   const selector = useSelector(state => state.filters.filters);
 
@@ -55,7 +54,7 @@ const AllProducts = () => {
                         <div className='filter-container'>
                           {
                             categories.map((category, index) => {
-                              return <ProductFilter key={index} filterName={category.Titre}/>
+                              return <ProductFilter key={ index } filterName={ category.Titre }/>
                             })
                           }
                         </div>
@@ -76,11 +75,11 @@ const AllProducts = () => {
                     ( el.Product_Name.toLowerCase().includes(searchProduct.toLowerCase())){
                       return el
                     }
-                  }).filter((el) => {
-                    if (selector === '') {
+                   }).filter((el) => {
+                    if (selector === []) {
                       return el
                     } else if
-                      ( el.Category.toLowerCase().includes(selector.toLowerCase())){
+                      ( el.Category.includes(selector)){
                         return el
                   }
                   })
