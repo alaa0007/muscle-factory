@@ -6,18 +6,28 @@ import { BsSearch } from 'react-icons/bs'
 import axios from 'axios'
 import CategoieItem from './CategoieItem'
 import ProductFilter from './ProductFilter'
+import { useSelector } from 'react-redux'
 
 const AllProducts = () => {
   const [products, setProducts] = useState([])
+  const [categories, setCategories] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
+  const [searchProduct, setSearchProduct] = useState('')
+  const selector = useSelector(state => state.filters.filters);
 
 
   useEffect(() => {
-    axios.get('https://projet-tekup.herokuapp.com/Product/').then(res => {
+    axios.get('https://projet-tekup.herokuapp.com/Product/').then((res) => {
       setProducts(res.data)
       console.log(res.data);
     });
     },[])
 
+    useEffect(()=> {
+      axios.get("https://projet-tekup.herokuapp.com/Category/").then((res) =>{
+        setCategories(res.data)
+      })
+    },[])
 
   return (
     <div className='all-products-container'>
@@ -25,14 +35,11 @@ const AllProducts = () => {
             <h1>PRODUCTS</h1>
             <div className='products-categorie'>
               <div className='products-categorie-content'> 
-                <CategoieItem name="WHEY PROTEIN" numbre="3"/>
-                <CategoieItem name="WEIGHT GAINER" numbre="3"/>
-                <CategoieItem name="CASEIN" numbre="3"/>
-                <CategoieItem name="PACK" numbre="3"/>
-                <CategoieItem name="MULTIVITAMIN" numbre="3"/>
-                <CategoieItem name="ACCESSORIES" numbre="3"/>
-                <CategoieItem name="T-SHIRT" numbre="3"/>
-                <CategoieItem name="SHAKERS" numbre="3"/>
+              {
+                categories.map((category, index) => {
+                  return <CategoieItem key={ index } name={ category.Titre } numbre="5" />
+                })
+              }
               </div>
             </div>
         </div>
@@ -46,18 +53,15 @@ const AllProducts = () => {
                           <IoIosOptions/>
                         </div>
                         <div className='filter-container'>
-                          <ProductFilter filterName="WHEY PROTEIN"/>
-                          <ProductFilter filterName="SHAKERS"/>
-                          <ProductFilter filterName="ACCESSORIES"/>
-                          <ProductFilter filterName="CASEIN"/>
-                          <ProductFilter filterName="T-SHIRT"/>
-                          <ProductFilter filterName="WEIGHT GAINER"/>
-                          <ProductFilter filterName="MULTIVITAMIN"/>
-                          <ProductFilter filterName="PACk"/>
+                          {
+                            categories.map((category, index) => {
+                              return <ProductFilter key={index} filterName={category.Titre}/>
+                            })
+                          }
                         </div>
                         </div>
                         <div className='filter-search'>
-                          <input type="search" placeholder="Search for product" className='search'/>
+                          <input type="search" placeholder="Search for product" className='search' onChange={(e) => setSearchProduct(e.target.value)}/>
                           <BsSearch className='search-btn'/>
                        </div>
                     </div>
@@ -65,7 +69,22 @@ const AllProducts = () => {
             </div>
             <div className='all-products-body-content'>
               {
-                products.map(( product, index ) => {
+                products.filter((el) => {
+                  if (searchProduct === '') {
+                    return el
+                  } else if
+                    ( el.Product_Name.toLowerCase().includes(searchProduct.toLowerCase())){
+                      return el
+                    }
+                  }).filter((el) => {
+                    if (selector === '') {
+                      return el
+                    } else if
+                      ( el.Category.toLowerCase().includes(selector.toLowerCase())){
+                        return el
+                  }
+                  })
+                  .map(( product, index ) => {
                   return ( 
                     <ProductsItem key={ index } product={ product } />
                   )

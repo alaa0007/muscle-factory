@@ -21,13 +21,13 @@ const Profil = () => {
 
   const[isImageUrl, setIsImageUrl] = useState("");
   const[isformValues, setFormValues] = useState({});
-  const[tranformationValues, setIstranformationValues] = useState([{}]);
+  const[tranformationValues, setIstranformationValues] = useState([]);
   const[formErrors, setFormErrors] = useState({});
   const[isSubmitted, setIsSubmitted] = useState(false);
   const[isItem, setIsItem] = useState({});
   const[open, setOpen] = useState(false);
   const[isImage, setIsImage] = useState(null);
-  
+  const [user, setUser] = useState({});
 
   
   const onCloseModal = () => setOpen(false)
@@ -49,6 +49,10 @@ const Profil = () => {
     // setFormValues({});
   }
 
+    useEffect(() => {
+      setUser(JSON.parse(localStorage.getItem('user')));
+      console.log(user.Email);
+    } , [user.Email]);
 
 
 
@@ -77,11 +81,13 @@ const Profil = () => {
   }
 
   useEffect(() => {
-    axios.get("https://projet-tekup.herokuapp.com/Transformation/"+id).then(res => {
+    axios.get(`https://projet-tekup.herokuapp.com/Transformation/?id=${user.Email}`).then(res => {
       setIstranformationValues(res.data);
       console.log(res.data);
+    }).catch(error => {
+      console.log(error);
     })
-  }, []);
+  }, [user]);
 
 
 
@@ -206,9 +212,20 @@ const Profil = () => {
               </div>
             </div>
             <hr />
-            <div className='popup-progress'>
-              <img src={ isItem.Image_Link || profilBody } alt="yourBodyImage" />
-            </div>
+            {
+              isItem.Image_Link === "False" ? 
+              ( 
+                <div className='popup-progress'>
+                  <img src={ profilBody } alt="yourBodyImage1" />
+                </div> 
+              ) 
+                : 
+              ( 
+                <div className='popup-progress'>
+                  <img src={ isItem.Image_Link } alt="yourBodyImage2" />
+                </div> 
+              )
+            }
           </div>
       </div>
       </Modal> 

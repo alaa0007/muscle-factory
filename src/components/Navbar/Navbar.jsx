@@ -63,7 +63,6 @@ const Navbar = () => {
     if(isLoggin === true){
     QRCode = user.Subscription_expire_Date;
     }
-    console.log(QRCode);
     QrCode.toDataURL(QRCode).then(url => {
       setQrCodeImg(url);
     });
