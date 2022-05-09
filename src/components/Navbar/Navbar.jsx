@@ -45,7 +45,6 @@ const Navbar = () => {
     e.preventDefault();
     axios.get('https://projet-tekup.herokuapp.com/Member/')
     .then(res => {
-      console.log(res.data);
       const user = res.data.find(user => user.Email === isEmail && user.Password === isPassword);
       if(user){
         setUser(window.localStorage.setItem('user', JSON.stringify(user)));
@@ -179,7 +178,7 @@ const Navbar = () => {
               <input type='password' name="password" placeholder='Password' onChange={(e) => setIsPassword(e.target.value)}  value={isPassword} required/>
             </div>
             <div className='popup-footer'>   
-               <button className='btn btn-login'>Connect</button>
+               <button className='btn btn-login-popup'>Connect</button>
                </div>
             </form>
           </div>

@@ -96,9 +96,12 @@ button{
 
 .btn-login:hover{
     color: var(--color-dark);
-    color: var(--color-dark);
     background-color: var(--color-white);
-    
+}
+
+.btn-login-popup{
+    color: var(--color-white);
+    background-color: var(--color-dark);
 }
 
 
