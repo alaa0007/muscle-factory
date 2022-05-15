@@ -8,6 +8,7 @@ import logo from '../../assets/Images/logoWithoutBg.png';
 import profilHeigth from '../../assets/Images/profilHeigth.png';
 import profilWeight from '../../assets/Images/profilWeight.png';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,23 +16,31 @@ const Profil = () => {
   const idImage = useId();
   const idHeight = useId();
   const idWeight = useId();
-
+  const navigate = useNavigate();
   const { id } = useParams();
   const fromRef = useRef();
 
-  const[isImageUrl, setIsImageUrl] = useState("");
-  const[isformValues, setFormValues] = useState({});
-  const[tranformationValues, setIstranformationValues] = useState([]);
-  const[formErrors, setFormErrors] = useState({});
-  const[isSubmitted, setIsSubmitted] = useState(false);
-  const[isItem, setIsItem] = useState({});
-  const[open, setOpen] = useState(false);
-  const[isImage, setIsImage] = useState(null);
+  const [isImageUrl, setIsImageUrl] = useState("");
+  const [isformValues, setFormValues] = useState({});
+  const [tranformationValues, setIstranformationValues] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isItem, setIsItem] = useState({});
+  const [open, setOpen] = useState(false);
+  const [isImage, setIsImage] = useState(null);
   const [user, setUser] = useState({});
 
   
   const onCloseModal = () => setOpen(false)
-  
+
+  useEffect(() => {
+    if(!JSON.parse(window.localStorage.getItem('isLoggin'))){
+      navigate('/')
+    }else
+    {
+      
+    }
+  }, [])
 
 
   const handleChange = (e) => {
