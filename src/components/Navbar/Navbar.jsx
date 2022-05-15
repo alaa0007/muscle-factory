@@ -146,7 +146,9 @@ const Navbar = () => {
         }}
         animationDuration={500}>
           <div className='qrcode-modal'>
-            <img src={qrCodeImg} alt="qrcode" className='qrcode-img'/>
+            <div className='qrcode-img-container'>
+            <img src={qrCodeImg} alt="qrcode"/>
+            </div>
           </div>
       </Modal>
         

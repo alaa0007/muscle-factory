@@ -106,15 +106,20 @@ button{
 
 
 .qrcode-modal{
-    margin-top: 2.5rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: 3.5rem;
+    display: flex;
 }
 
 .qrCode{
     color: var(--color-white);
     cursor: pointer;
 }
+
+.qrcode-modal .qrcode-img-container{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+                rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
 
 .qrCode:hover{
     color: var(--color-light);
