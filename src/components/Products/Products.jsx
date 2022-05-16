@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom'
 import ProductItem from './ProductItem'
 import './products.css'
 import axios from 'axios'
+import { Modal } from 'react-responsive-modal';
+
 
 const Products = () => {
   const [products, setProducts] = useState([])
-  
+
+
 
   useEffect(() => {
     axios.get('https://projet-tekup.herokuapp.com/Product/').then(res => {
       setProducts(res.data)
     })
   },[])
+
+
+
 
   return (
     <>
@@ -26,7 +32,7 @@ const Products = () => {
         <div className='products-body'>
           {
             products.slice(0,4).map((product ,index) => { 
-              return <ProductItem key={index} product={product}/>
+              return <ProductItem key={index} product={product} />
             })
           }
         </div>
@@ -37,5 +43,7 @@ const Products = () => {
     </>
   )
 }
+
+
 
 export default Products

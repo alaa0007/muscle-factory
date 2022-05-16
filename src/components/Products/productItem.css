@@ -1,0 +1,28 @@
+.product-contianer{
+    margin-top: 2rem;
+}
+
+.product-content{
+    width: 20rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.product-header-img{
+    width: 200px;
+    height: 280px;
+}
+
+.product-header-img img{
+    width: 100%;
+    height: 100%;
+}   
+
+.product-info{
+    text-align: center;
+}
+
