@@ -1,14 +1,71 @@
-import React, { useState } from 'react'
-// import logo from '../../assets/Images/logoWithoutBg.png';
+import React, { useState, useRef, useEffect } from 'react'
 import { Modal } from 'react-responsive-modal';
 import './productItem.css'
+import Swal from 'sweetalert2'
+
+
 
 const ProductItem = ( { product } ) => {
 
   const [open, setOpen] = useState(false);
+  const paypal = useRef();
+  const [paypalBtn, setPaypalBtn] = useState(false);
 
   const onCloseModal = () => setOpen(false)
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'center',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+  useEffect(() => {
+    const price =  product.Price/3.21
+    let res = price.toFixed(2);
+
+    window.paypal
+      .Buttons({
+        createOrder: (data, actions, err) => {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+              {
+                description: product.Product_Name,
+                amount: {
+                  currency_code: "EUR",
+                  value: res,
+                },
+              },
+            ],
+          });
+        },
+        onApprove: async (data, actions) => {
+          
+          const order = await actions.order.capture();
+          console.log(order);
+          setOpen(false);
+          Toast.fire({
+            icon: 'success',
+            title: 'Thank you for your purchase!'
+          })
+        },
+        onError: (err) => {
+          console.log(err);
+          setOpen(false);
+        },
+        onShippingChange: function(data,actions){
+          return actions.resolve();
+      }
+      })
+      .render(paypal.current);
+  }, [paypalBtn, product,open,Toast]);
+  
   
   return (
     <div className='product-item'>
@@ -44,8 +101,10 @@ const ProductItem = ( { product } ) => {
                 </div>
             </div>
             <div className='product-footer'>
-              <button className='btn btn-cart'>BUY NOW</button>
-            </div>
+              {
+                !paypalBtn ? <button className='btn btn-cart' onClick={ () => { setPaypalBtn(true)} }>buy with Paypal </button> : <div ref={ paypal } />
+              }            
+              </div>
           </div>
         </div>
       </Modal>
