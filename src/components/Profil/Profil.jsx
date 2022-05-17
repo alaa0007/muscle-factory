@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useId, useRef} from 'react'
-import { useParams } from 'react-router-dom';
 import './profil.css'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { Modal } from 'react-responsive-modal';
@@ -17,10 +16,9 @@ const Profil = () => {
   const idHeight = useId();
   const idWeight = useId();
   const navigate = useNavigate();
-  const { id } = useParams();
   const fromRef = useRef();
 
-  const [isImageUrl, setIsImageUrl] = useState("");
+  const [isImageUrl, setIsImageUrl] = useState("/static/media/profilBody.1e758d21286dbed5985c.jpg");
   const [isformValues, setFormValues] = useState({});
   const [tranformationValues, setIstranformationValues] = useState([]);
   const [formErrors, setFormErrors] = useState({});
@@ -35,12 +33,25 @@ const Profil = () => {
 
   useEffect(() => {
     if(!JSON.parse(window.localStorage.getItem('isLoggin'))){
+
       navigate('/')
     }else
     {
       
     }
   }, [])
+
+
+  const uploadImg = async () =>  {
+    const fromImg = new FormData();
+    fromImg.append('file', isImage);
+    fromImg.append('upload_preset', 'schascqs');
+    await axios.post("https://api.cloudinary.com/v1_1/dy6lmqeco/upload", fromImg)
+    .then(res => {
+      setIsImageUrl(res.data.secure_url);
+      console.log(res);
+    });
+  }
 
 
   const handleChange = (e) => {
@@ -65,38 +76,19 @@ const Profil = () => {
 
 
 
-  const uploadImg = async () =>  {
-    const fromImg = new FormData();
-    fromImg.append('file', isImage);
-    fromImg.append('upload_preset', 'schascqs');
-    await axios.post("https://api.cloudinary.com/v1_1/dy6lmqeco/upload", fromImg)
-    .then(res => {
-      console.log(res.data.secure_url);
-      setIsImageUrl(res.data.secure_url);
-      console.log(isImageUrl);
-    });
-  }
+
 
   
-  const apiProfilUpdate = (formValues) => {
-    formValues = { userId : id, image: isImage, imageUrl : isImageUrl, ...formValues}
-    axios.post("https://projet-tekup.herokuapp.com/Transformation/", formValues).then(res => {
-      console.log(res.data);
-      fromRef.current.reset();
-  })
-     .catch(error => {
-      console.log(error);
-    });
-  }
+
 
   useEffect(() => {
-    axios.get(`https://projet-tekup.herokuapp.com/Transformation/?id=${user.Email}`).then(res => {
+    axios.get(`https://projet-tekup.herokuapp.com/Transformation/?Member_Email=${user.Email}`).then(res => {
       setIstranformationValues(res.data);
       console.log(res.data);
     }).catch(error => {
       console.log(error);
     })
-  }, [user]);
+  }, [user,tranformationValues]);
 
 
 
@@ -128,6 +120,24 @@ const Profil = () => {
   }
   ,[])
 
+
+
+
+  const apiProfilUpdate = (formValues) => {
+    const id = tranformationValues.length + 1;
+    formValues = { id: id, Member_Email : user.Email, Image_Link : isImageUrl, ...formValues}
+    console.log(formValues);
+    axios.post("https://projet-tekup.herokuapp.com/Transformation/", formValues).then(res => {
+      console.log(res.data);
+      fromRef.current.reset();
+  })
+     .catch(error => {
+      console.log(error);
+    });
+    setFormValues({});
+  }
+
+
   return (
     <div className='profil-container'>
       <div className='top'></div>
@@ -149,18 +159,18 @@ const Profil = () => {
             <div className='profil-form-inputs'>
               <form onSubmit={handleSubmit} ref={fromRef}>
                 <label> Week data :</label>
-                <input type='date' placeholder='dd/mm/yy' name="date" value={ isformValues.date } onChange={handleChange} required/>
+                <input type='date' placeholder='dd/mm/yy' name="Week_Date" value={ isformValues.Week_Date } onChange={handleChange} required/>
                 <label> Week goal :</label>
-                <select name="goal" value={ isformValues.goal } onChange={handleChange} required>
+                <select name="Week_Goal" value={ isformValues.Week_Goal } onChange={handleChange} required>
                   <option value="nothing">Select your goal</option>
                   <option value="lose-weight">Lose weight</option>
                   <option value="build-muscle">Build muscle</option>
                   <option value="gain-muscle">Gain muscle</option>
                 </select>
                 <label> Body Height :</label>
-                <input type='text' placeholder='180' className='height' name="height" value={ isformValues.height } onChange={handleChange} required/>Cm
+                <input type='text' placeholder='180' className='height' name="Body_Height" value={ isformValues.Body_Height } onChange={handleChange} required/>Cm
                 <label className='space'> Body Weight :</label>
-                <input type='text' placeholder='80' className='weight' name="weight" value={ isformValues.weight } onChange={handleChange} required/>Kg
+                <input type='text' placeholder='80' className='weight' name="Body_Weight" value={ isformValues.Body_Weight } onChange={handleChange} required/>Kg
                 <label htmlFor={ idImage } className='bodyImage'>Your body image <BsFillCameraFill className='logoImg'/></label>
                 <input type="file" id={ idImage } accept="image/*" value={ isformValues.image } onChange={(e) => {setIsImage(e.target.files[0]);}}  hidden/>              
                 <div className='btn-form'>

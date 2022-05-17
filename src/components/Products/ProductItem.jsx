@@ -102,7 +102,7 @@ const ProductItem = ( { product } ) => {
             </div>
             <div className='product-footer'>
               {
-                !paypalBtn ? <button className='btn btn-cart' onClick={ () => { setPaypalBtn(true)} }>buy with Paypal </button> : <div ref={ paypal } />
+                !paypalBtn ? <button className='btn btn-cart' onClick={ () => { setPaypalBtn(true)} }>Paypal</button> : <div ref={ paypal } />
               }            
               </div>
           </div>

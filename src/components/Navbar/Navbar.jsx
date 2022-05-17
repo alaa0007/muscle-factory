@@ -119,7 +119,8 @@ const Navbar = () => {
                 <div onClick={() => setDropDown(!dropDown)} className="userDropDown"> {user.Email} <RiArrowDropDownLine/> </div>
                   <div className='dropdown-content'>  
                    <li><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')}>Profil</LinkTo></li>
-                  <li><span className='qrCode' onClick={onOpenModalQrcode}>Your Pass</span></li>
+                   <li><LinkTo to={`/Program`} onClick={() => setIsActive('')}>Program</LinkTo></li>
+                  <li><span className='qrCode' onClick={ onOpenModalQrcode }>Your Pass</span></li>
                   <hr/>
                   <li><LinkTo to='/'><span onClick={handleLogOut}> Logout </span></LinkTo></li> 
                   </div>
