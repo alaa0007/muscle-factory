@@ -65,7 +65,7 @@ const Navbar = () => {
     QrCode.toDataURL(QRCode).then(url => {
       setQrCodeImg(url);
     });
-  } , [isLoggin]);
+  } , [isLoggin, user]);
 
   
   const handleLogOut = () => {
@@ -76,12 +76,8 @@ const Navbar = () => {
   useEffect(() => {
     setUser(JSON.parse(window.localStorage.getItem('user')));
     setIsLoggin(JSON.parse(window.localStorage.getItem('isLoggin')));
-  }, [isLoggin]);
-
-  useEffect(() => {
     setIsError('');
-  },[isEmail,isPassword])
-
+  }, [isLoggin,isEmail,isPassword]);
 
   const changeNavBg = () => {
     if(window.scrollY >= 160) {
@@ -112,8 +108,7 @@ const Navbar = () => {
             { !isLoggin ? (
             <li>
               <button className='btn btn-navbar btn-login' onClick={onOpenModal}>Login</button></li> ): (
-              // <li className='isLogin'><LinkTo to={`/Profil/${user.id}`} onClick={() => setIsActive('')} className='btn btn-navbar'>Profil</LinkTo>
-              // <LinkTo to='/'><img className="shutDownLogo" src={shutDown} alt='shutDownLogo' onClick={handleLogOut} /></LinkTo></li>
+
               <div>
                 <div className="dropdown">
                 <div onClick={() => setDropDown(!dropDown)} className="userDropDown"> {user.Email} <RiArrowDropDownLine/> </div>
@@ -136,6 +131,8 @@ const Navbar = () => {
         { isMobile  ? <AiOutlineClose /> : <AiOutlineMenuFold /> }
         </a>
         </div>
+
+
 
 
         { /* QRCode popup */}
@@ -187,11 +184,6 @@ const Navbar = () => {
           </div>
       </div>
       </Modal>
-
-
-
-      
-       {/* <Login open={open} onClose={onCloseModal} /> */}
     </nav>
   ) 
 }

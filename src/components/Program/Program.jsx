@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import chest from '../../assets/Images/chest.png';
 import back from '../../assets/Images/back.jpg';
@@ -20,7 +20,6 @@ import CardioProgram from './CardioProgram';
 const Program = () => {
 
     const navigate = useNavigate();
-    const [program, setProgram] = useState([]);
     const [isChest, setIsChest] = useState([]);
     const [isBack, setIsBack] = useState([]);
     const [isShoulder, setIsShoulder] = useState([]);
