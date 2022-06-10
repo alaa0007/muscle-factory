@@ -15,19 +15,25 @@ const AllProducts = () => {
   const selector = useSelector(state => state.filters.filters);
 
 
-  useEffect(() => {
-    axios.get('https://projet-tekup.herokuapp.com/Product/').then((res) => {
-      setProducts(res.data)
-      console.log(res.data);
-    });
-    },[])
-
-    useEffect(()=> {
+    const getCategory = () =>{
       axios.get("https://projet-tekup.herokuapp.com/Category/").then((res) =>{
         setCategories(res.data)
       })
+    }
+
+    const getProduct = () =>{
+      axios.get('https://projet-tekup.herokuapp.com/Product/').then((res) => {
+        setProducts(res.data)
+        console.log(res.data);
+      });
+    }
+
+    useEffect(()=> {
+      getCategory();
+      getProduct();
     },[])
 
+    
   return (
     <div className='all-products-container'>
         <div className='all-products-header'>
