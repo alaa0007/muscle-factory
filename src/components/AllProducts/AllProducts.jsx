@@ -14,24 +14,19 @@ const AllProducts = () => {
   const [searchProduct, setSearchProduct] = useState('')
   const selector = useSelector(state => state.filters.filters);
 
-
-    const getCategory = () =>{
-      axios.get("https://projet-tekup.herokuapp.com/Category/").then((res) =>{
-        setCategories(res.data)
-      })
-    }
-
-    const getProduct = () =>{
+    useEffect(() =>{
       axios.get('https://projet-tekup.herokuapp.com/Product/').then((res) => {
         setProducts(res.data)
         console.log(res.data);
       });
-    }
-
-    useEffect(()=> {
-      getCategory();
-      getProduct();
     },[])
+
+    useEffect(() =>{
+      axios.get("https://projet-tekup.herokuapp.com/Category/").then((res) =>{
+        setCategories(res.data)
+      })
+    },[])
+
 
     
   return (
