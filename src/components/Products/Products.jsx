@@ -11,7 +11,7 @@ const Products = () => {
 
 
   useEffect(() => {
-    axios.get('https://projet-tekup.herokuapp.com/Product/').then(res => {
+    axios.get('http://localhost:8000/Product/').then(res => {
       setProducts(res.data)
     })
   },[])

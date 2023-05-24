@@ -39,26 +39,26 @@ const Program = () => {
 
 
       useEffect(() => {
-          axios.get("https://projet-tekup.herokuapp.com/Chest/").then(res => {
+          axios.get("http://localhost:8000/Chest/").then(res => {
             setIsChest(res.data);
             console.log(res.data);
             }).catch(error => {
                 console.log(error);
             })
-            axios.get("https://projet-tekup.herokuapp.com/Back/").then(res => {
+            axios.get("http://localhost:8000/Back/").then(res => {
                 setIsBack(res.data);
                 console.log(res.data);
             }).catch(error => {
                 console.log(error);
             })
-            axios.get("https://projet-tekup.herokuapp.com/Shoulders/").then(res => {
+            axios.get("http://localhost:8000/Shoulders/").then(res => {
                 setIsShoulder(res.data);
                 console.log(res.data);
             }).catch(error => {
                 console.log(error);
             }
             )
-            axios.get("https://projet-tekup.herokuapp.com/Legs/").then(res => {
+            axios.get("http://localhost:8000/Legs/").then(res => {
                 setIsLeg(res.data);
                 console.log(res.data);
             }
@@ -66,7 +66,7 @@ const Program = () => {
                 console.log(error);
             }
             )
-            axios.get("https://projet-tekup.herokuapp.com/Biceps/").then(res => {
+            axios.get("http://localhost:8000/Biceps/").then(res => {
                 setIsBiceps(res.data);
                 console.log(res.data);
             }
@@ -74,7 +74,7 @@ const Program = () => {
                 console.log(error);
             }
             )
-            axios.get("https://projet-tekup.herokuapp.com/Triceps/").then(res => {
+            axios.get("http://localhost:8000/Triceps/").then(res => {
                 setIsTriceps(res.data);
                 console.log(res.data);
             }
@@ -82,7 +82,7 @@ const Program = () => {
                 console.log(error);
             }
             )
-            axios.get("https://projet-tekup.herokuapp.com/Cardio/").then(res => {
+            axios.get("http://localhost:8000/Cardio/").then(res => {
                 setIsCardio(res.data);
                 console.log(res.data);
             }

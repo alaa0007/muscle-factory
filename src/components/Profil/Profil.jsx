@@ -82,7 +82,7 @@ const Profil = () => {
 
 
   useEffect(() => {
-    axios.get(`https://projet-tekup.herokuapp.com/Transformation/?Member_Email=${user.Email}`).then(res => {
+    axios.get(`http://localhost:8000/Transformation/?Member_Email=${user.Email}`).then(res => {
       setIstranformationValues(res.data);
       console.log(res.data);
     }).catch(error => {
@@ -127,7 +127,7 @@ const Profil = () => {
     const id = tranformationValues.length + 1;
     formValues = { id: id, Member_Email : user.Email, Image_Link : isImageUrl, ...formValues}
     console.log(formValues);
-    axios.post("https://projet-tekup.herokuapp.com/Transformation/", formValues).then(res => {
+    axios.post("http://localhost:8000/Transformation/", formValues).then(res => {
       console.log(res.data);
       fromRef.current.reset();
   })

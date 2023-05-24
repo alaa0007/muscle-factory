@@ -43,7 +43,7 @@ const Navbar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.get('https://projet-tekup.herokuapp.com/Member/')
+    axios.get('http://localhost:8000/Member/')
     .then(res => {
       const user = res.data.find(user => user.Email === isEmail && user.Password === isPassword);
       if(user){
