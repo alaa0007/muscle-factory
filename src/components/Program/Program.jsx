@@ -6,8 +6,8 @@ import back from '../../assets/Images/back.jpg';
 import shoulder from '../../assets/Images/shoulder.jpg';
 import leg from '../../assets/Images/legs.png';
 import biceps from '../../assets/Images/biceps.jpg';
-import triceps from '../../assets/Images/triceps.png';
-import cardio from '../../assets/Images/cardio.png';
+import triceps from '../../assets/Images/triceps.webp';
+import cardio from '../../assets/Images/cardio.avif';
 import './program.css'
 import ChestProgram from './ChestProgram';
 import BackProgram from './BackProgram';
@@ -105,23 +105,28 @@ const Program = () => {
             <div className="program-title">
                 <h1> Program </h1>
             </div>
-            <div className="program-body">
-                <div className="program-body-left">
+            <div className='block'>
+                <h2 className='muscle_name'>Chest</h2>
+                <div className="program-body">
                     <div className="program-body-left">
-                    <img src={ chest } alt="program" /> 
+                        <div className="program-body-left">
+                        <img src={ chest } alt="program" /> 
+                        </div>
+                    </div>
+                    <div className="program-body-right">
+                        {
+                            isChest.map(chest => {
+                                return (
+                                    <ChestProgram key={chest.id} chest={chest} />
+                                )
+                            })
+                        }
                     </div>
                 </div>
-                <div className="program-body-right">
-                    {
-                        isChest.map(chest => {
-                            return (
-                                <ChestProgram key={chest.id} chest={chest} />
-                            )
-                        })
-                    }
-                </div>
             </div>
-            <div className="program-body-inv">
+            <div className="block">
+                <h2 className='muscle_name'>Back</h2>
+                <div className="program-body-inv">
                     <div className="program-body-left">
                         {
                             isBack.map(back => {
@@ -131,84 +136,100 @@ const Program = () => {
                             })
                         }
                     </div>
-                <div className="program-body-right">
-                 <img src={ back } alt="program" /> 
-                </div>
-            </div>
-            <div className="program-body">
-                <div className="program-body-left">
-                    <div className="program-body-left">
-                    <img src={ shoulder } alt="program" /> 
+                    <div className="program-body-right">
+                    <img src={ back } alt="program" /> 
                     </div>
                 </div>
-                <div className="program-body-right">
-                    {
-                        isShoulder.map(shoulder => {
-                            return (
-                                <ShouldersProgram key={shoulder.id} shoulder={shoulder} />
-                            )
-                        })
-                    }
-                </div>
             </div>
-            <div className="program-body-inv">
+            <div className='block'>
+                <h2 className='muscle_name'>Shoulder</h2>
+                <div className="program-body">
                     <div className="program-body-left">
+                        <div className="program-body-left">
+                        <img src={ shoulder } alt="program" /> 
+                        </div>
+                    </div>
+                    <div className="program-body-right">
                         {
-                            isLeg.map(leg => {
+                            isShoulder.map(shoulder => {
                                 return (
-                                    <LegsProgram key={leg.id} legs={leg} />
+                                    <ShouldersProgram key={shoulder.id} shoulder={shoulder} />
                                 )
                             })
                         }
                     </div>
-                <div className="program-body-right">
-                 <img src={ leg } alt="program" /> 
                 </div>
             </div>
-            <div className="program-body">
-                <div className="program-body-left">
-                    <div className="program-body-left">
-                    <img src={ biceps } alt="program" /> 
+            <div className="block">
+                <h2 className='muscle_name'>Legs</h2>
+                <div className="program-body-inv">
+                        <div className="program-body-left">
+                            {
+                                isLeg.map(leg => {
+                                    return (
+                                        <LegsProgram key={leg.id} legs={leg} />
+                                    )
+                                })
+                            }
+                        </div>
+                    <div className="program-body-right">
+                    <img src={ leg } alt="program" /> 
                     </div>
                 </div>
-                <div className="program-body-right">
-                    {
-                        isBiceps.map(biceps => {
-                            return (
-                                <BicepsProgram key={biceps.id} biceps={biceps} />
-                            )
-                        })
-                    }
-                </div>
             </div>
-            <div className="program-body-inv">
+            <div className='block'>
+                <h2 className='muscle_name'>Biceps</h2>
+                <div className="program-body">
                     <div className="program-body-left">
+                        <div className="program-body-left">
+                        <img src={ biceps } alt="program" /> 
+                        </div>
+                    </div>
+                    <div className="program-body-right">
                         {
-                            isTriceps.map(triceps => {
+                            isBiceps.map(biceps => {
                                 return (
-                                    <TricepsProgram key={triceps.id} triceps={triceps} />
+                                    <BicepsProgram key={biceps.id} biceps={biceps} />
                                 )
                             })
                         }
                     </div>
-                <div className="program-body-right">
-                 <img src= {triceps } alt="program" /> 
                 </div>
             </div>
-            <div className="program-body">
-                <div className="program-body-left">
-                    <div className="program-body-left">
-                    <img src={ cardio } alt="program" /> 
+            <div className="block">
+                <h2 className='muscle_name'>Triceps</h2>
+                <div className="program-body-inv">
+                        <div className="program-body-left">
+                            {
+                                isTriceps.map(triceps => {
+                                    return (
+                                        <TricepsProgram key={triceps.id} triceps={triceps} />
+                                    )
+                                })
+                            }
+                        </div>
+                    <div className="program-body-right">
+                    <img src= {triceps } alt="program" /> 
                     </div>
                 </div>
-                <div className="program-body-right">
-                    {
-                        isCardio.map(cardio => {
-                            return (
-                                <CardioProgram key={cardio.id} cardio={cardio} />
-                            )
-                        })
-                    }
+            </div>
+            <div className='block'>
+                <h2 className='muscle_name'>Cardio</h2>
+                <div className="program-body">
+                    <div className="program-body-left">
+                        <div className="program-body-left">
+                            <img src={ cardio } alt="program" /> 
+                        </div>
+                    </div>
+                    <div className="program-body-right">
+                        {
+                            isCardio.map(cardio => {
+                                return (
+                                    <CardioProgram key={cardio.id} cardio={cardio} />
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </div>

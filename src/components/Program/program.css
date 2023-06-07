@@ -30,16 +30,31 @@
 }
 
 .program-body .program-body-left img {
-    width: 80%;
-    height: 100%;
+
     object-fit: cover;
     margin-bottom: 3rem;
 }
-
+.program-body-right{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .program-body-inv .program-body-right img{
-    width: 80%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
+
+}
+
+.muscle_name{
+    font-size: 2rem;
+    font-family: 'Saira Condensed', sans-serif;
+    letter-spacing: 5px;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .program-body-inv .program-body-left{
@@ -48,6 +63,8 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    width: 85%;
+    height: 100%;
 }
 
 .program-item{
